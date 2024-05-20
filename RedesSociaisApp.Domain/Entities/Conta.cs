@@ -22,5 +22,6 @@ namespace RedesSociaisApp.Domain.Entities
         public string Email { get; private set; }
         public DateTime DataNasc { get; private set; }
         public string Telefone { get; private set; }
+        public Perfil Perfil { get; private set; }
     }
 }
