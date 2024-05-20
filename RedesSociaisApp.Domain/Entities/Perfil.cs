@@ -17,6 +17,19 @@ namespace RedesSociaisApp.Domain.Entities
             Localidade = localidade;
         }
 
+        public Perfil(int idConta, Conta conta, string nomeExibicao, string? sobre, string? foto, string? profissao, string localidade)
+        {
+            IdConta = idConta;
+            Conta = conta;
+            NomeExibicao = nomeExibicao;
+            Sobre = sobre;
+            Foto = foto;
+            Profissao = profissao;
+            Localidade = localidade;
+        }
+
+        public int IdConta { get; private set; }
+        public Conta Conta { get; private set; }
         public string NomeExibicao { get; private set; }
         public string? Sobre { get; private set; }
         public string? Foto { get; private set; }

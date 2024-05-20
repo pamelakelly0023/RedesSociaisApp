@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedesSociaisApp.API", "Rede
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedesSociaisApp.Domain", "RedesSociaisApp.Domain\RedesSociaisApp.Domain.csproj", "{0B3C838C-7B88-47CB-8ED2-0F97293FD861}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedesSociaisApp.Infrastructure", "RedesSociaisApp.Infrastructure\RedesSociaisApp.Infrastructure.csproj", "{3F07D38C-2C41-43B0-B4A0-E868BEA5F633}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{0B3C838C-7B88-47CB-8ED2-0F97293FD861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B3C838C-7B88-47CB-8ED2-0F97293FD861}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B3C838C-7B88-47CB-8ED2-0F97293FD861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F07D38C-2C41-43B0-B4A0-E868BEA5F633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F07D38C-2C41-43B0-B4A0-E868BEA5F633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F07D38C-2C41-43B0-B4A0-E868BEA5F633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F07D38C-2C41-43B0-B4A0-E868BEA5F633}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

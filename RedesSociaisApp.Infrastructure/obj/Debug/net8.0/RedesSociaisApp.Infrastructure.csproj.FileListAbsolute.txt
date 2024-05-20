@@ -1,0 +1,12 @@
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Infrastructure.deps.json
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Infrastructure.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Infrastructure.pdb
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.AssemblyInfoInputs.cache
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.AssemblyInfo.cs
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.csproj.CoreCompileInputs.cache
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.sourcelink.json
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\refint\RedesSociaisApp.Infrastructure.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.pdb
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\ref\RedesSociaisApp.Infrastructure.dll
