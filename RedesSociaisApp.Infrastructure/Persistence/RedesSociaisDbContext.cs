@@ -29,16 +29,12 @@ namespace RedesSociaisApp.Infrastructure.Persistence
             });
 
             builder.Entity<Perfil>(e => {
+                
                 e.HasKey(p => p.Id);
 
                 e.HasMany(p => p.Publicacoes)
-                    .WithOne(b => b.Perfil)
-                    .HasForeignKey(b => b.IdPerfil)
-                    .OnDelete(DeleteBehavior.Restrict);
-                
-                e.HasOne(p => p.Conta)
                     .WithOne(c => c.Perfil)
-                    .HasForeignKey<Perfil>(p => p.CreatedBy)
+                    .HasForeignKey(b => b.IdPerfil)
                     .OnDelete(DeleteBehavior.Restrict);
                 
             });
