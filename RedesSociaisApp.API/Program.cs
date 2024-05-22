@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using RedesSociaisApp.API.Endpoints;
+using RedesSociaisApp.Infrastructure.Persistence;
+using RedesSociaisApp.Infrastructure;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8Y8s6mRD53K6u4ncfIAHOLsY9igUmhrF37ujgPUXe2gpXRzaXuHeIS3Wht7Vo1a+kfcMeyT64d37WLG7qfYx+Q==",
+  "dgSpecHash": "lZhiN77SrfOcSa2CUyrWkLUZfj8zoQqXIjI8iRWyqNlGhgdSYl6PhK8gh0kpGjdL2y02L5/mEQfd9+3fPlW0Eg==",
   "success": true,
   "projectFilePath": "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Infrastructure\\RedesSociaisApp.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,8 @@
     "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
+    "C:\\Users\\Pichau\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\8.0.2\\pomelo.entityframeworkcore.mysql.8.0.2.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Pichau\\.nuget\\packages\\system.composition\\6.0.0\\system.composition.6.0.0.nupkg.sha512",

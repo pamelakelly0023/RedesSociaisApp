@@ -28,6 +28,9 @@
             "projectReferences": {
               "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Domain\\RedesSociaisApp.Domain.csproj": {
                 "projectPath": "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Domain\\RedesSociaisApp.Domain.csproj"
+              },
+              "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Infrastructure\\RedesSociaisApp.Infrastructure.csproj": {
+                "projectPath": "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Infrastructure\\RedesSociaisApp.Infrastructure.csproj"
               }
             }
           }
@@ -45,6 +48,20 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -107,6 +124,79 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Infrastructure\\RedesSociaisApp.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Infrastructure\\RedesSociaisApp.Infrastructure.csproj",
+        "projectName": "RedesSociaisApp.Infrastructure",
+        "projectPath": "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Infrastructure\\RedesSociaisApp.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
+        "outputPath": "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Domain\\RedesSociaisApp.Domain.csproj": {
+                "projectPath": "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Domain\\RedesSociaisApp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

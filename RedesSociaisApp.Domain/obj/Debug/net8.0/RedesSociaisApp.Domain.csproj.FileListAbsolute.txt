@@ -9,3 +9,4 @@ D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Domain\obj\Debug\net8.0\Redes
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Domain\obj\Debug\net8.0\refint\RedesSociaisApp.Domain.dll
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Domain\obj\Debug\net8.0\RedesSociaisApp.Domain.pdb
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Domain\obj\Debug\net8.0\ref\RedesSociaisApp.Domain.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Domain\obj\Debug\net8.0\RedesSociaisApp.Domain.sourcelink.json

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RedesSociaisApp.Domain.Entities;
+using RedesSociaisApp.Domain;
 
 namespace RedesSociaisApp.Infrastructure.Persistence
 {
@@ -12,7 +13,7 @@ namespace RedesSociaisApp.Infrastructure.Persistence
         public RedesSociaisDbContext(
             DbContextOptions<RedesSociaisDbContext> options)
             : base(options)
-        {}
+        { }
 
         public DbSet<Conta> Contas { get; set; }
         public DbSet<Perfil> Perfis{ get; set; }

@@ -7,13 +7,16 @@ namespace RedesSociaisApp.Domain.Entities
 {
     public class Publicacao : BaseEntity
     {
-        public Publicacao(int idPerfil, Perfil perfil, string conteudo, DateTime dataPublicacao, string? localidade)
+        protected Publicacao(){}
+        public Publicacao(int idPerfil, string conteudo, DateTime dataPublicacao, string? localidade, Perfil perfil)
+            : base()
         {
             IdPerfil = idPerfil;
             Perfil = perfil;
             Conteudo = conteudo;
             DataPublicacao = dataPublicacao;
             Localidade = localidade;
+            Perfil = perfil;
         }
 
         public int IdPerfil { get; private set; }

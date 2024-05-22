@@ -7,7 +7,9 @@ namespace RedesSociaisApp.Domain.Entities
 {
     public class Perfil : BaseEntity
     {
-        public Perfil(int idConta, Conta conta, int createdBy, string nomeExibicao, string? sobre, string? foto, string? profissao, string localidade, List<Publicacao> publicacoes)
+        protected Perfil(){}
+        public Perfil(int idConta, int createdBy, string nomeExibicao, string? sobre, string? foto, string? profissao, string localidade, Conta conta)
+            : base()
         {
             IdConta = idConta;
             Conta = conta;
@@ -18,6 +20,7 @@ namespace RedesSociaisApp.Domain.Entities
             Profissao = profissao;
             Localidade = localidade;
             Publicacoes = [];
+            Conta = conta;
         }
 
         public int IdConta { get; private set; }
