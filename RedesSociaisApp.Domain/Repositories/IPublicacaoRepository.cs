@@ -12,6 +12,6 @@ namespace RedesSociaisApp.Domain.Repositories
         int Update(Publicacao publicacao);
         void Delete(Publicacao publicacao);
         Publicacao? GetById(int id);
-        List<Publicacao> GetAll();
+        List<Publicacao> GetAll(int idPerfil);
     }
 }
