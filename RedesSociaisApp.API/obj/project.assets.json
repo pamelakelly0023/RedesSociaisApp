@@ -984,6 +984,20 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "RedesSociaisApp.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "RedesSociaisApp.Domain": "1.0.0",
+          "RedesSociaisApp.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RedesSociaisApp.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RedesSociaisApp.Application.dll": {}
+        }
+      },
       "RedesSociaisApp.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2761,6 +2775,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "RedesSociaisApp.Application/1.0.0": {
+      "type": "project",
+      "path": "../RedesSociaisApp.Application/RedesSociaisApp.Application.csproj",
+      "msbuildProject": "../RedesSociaisApp.Application/RedesSociaisApp.Application.csproj"
+    },
     "RedesSociaisApp.Domain/1.0.0": {
       "type": "project",
       "path": "../RedesSociaisApp.Domain/RedesSociaisApp.Domain.csproj",
@@ -2778,6 +2797,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.5",
       "Microsoft.EntityFrameworkCore.InMemory >= 8.0.5",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.2",
+      "RedesSociaisApp.Application >= 1.0.0",
       "RedesSociaisApp.Domain >= 1.0.0",
       "RedesSociaisApp.Infrastructure >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
@@ -2808,6 +2828,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Application\\RedesSociaisApp.Application.csproj": {
+              "projectPath": "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Application\\RedesSociaisApp.Application.csproj"
+            },
             "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Domain\\RedesSociaisApp.Domain.csproj": {
               "projectPath": "D:\\projects-dotnet\\RedesSociaisApp\\RedesSociaisApp.Domain\\RedesSociaisApp.Domain.csproj"
             },

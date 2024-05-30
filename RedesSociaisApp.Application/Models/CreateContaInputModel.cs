@@ -13,6 +13,5 @@ namespace RedesSociaisApp.Application.Models
         public string Email { get; set; }
         public DateTime DataNasc { get; set; }
         public string Telefone { get; set; }
-        public Perfil Perfil{ get; set; }
     }
 }

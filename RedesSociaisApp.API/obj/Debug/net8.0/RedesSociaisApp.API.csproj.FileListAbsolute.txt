@@ -109,3 +109,5 @@ D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\RedesSoc
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\RedesSociaisApp.Infrastructure.pdb
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\MySqlConnector.dll
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\RedesSociaisApp.Application.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\RedesSociaisApp.Application.pdb

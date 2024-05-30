@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RedesSociaisApp.Domain.Repositories;
 using RedesSociaisApp.Infrastructure.Persistence;
+using RedesSociaisApp.Infrastructure.Repositories;
 
 namespace RedesSociaisApp.Infrastructure
 {
@@ -17,7 +19,8 @@ namespace RedesSociaisApp.Infrastructure
             )
         {
             services
-                .AddData(configuration);
+                .AddData(configuration)
+                .AddRepositories();
 
             return services;
         }
@@ -33,6 +36,16 @@ namespace RedesSociaisApp.Infrastructure
                 ServerVersion.AutoDetect(connectionString)));
                 
             return services;
+        }
+
+        private static IServiceCollection AddRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IContaRepository, ContaRepository>();
+            services.AddScoped<IPerfilRepository, PerfilRepository>();
+            services.AddScoped<IPublicacaoRepository, PublicacaoRepository>();
+
+            return services;
+            
         }
     }
 }

@@ -12,15 +12,23 @@ namespace RedesSociaisApp.Application.Services
     {
         private readonly IContaRepository _contaRepository = contaRepository;
 
+        public ResultViewModel<Conta?> GetById(int id)
+        {
+            var conta = _contaRepository.GetById(id);
+
+            return conta is null ?
+                ResultViewModel<Conta?>.Error("Not Found") : 
+                ResultViewModel<Conta?>.Success(conta);
+        }
+
         public ResultViewModel Insert(CreateContaInputModel model)
         {
            var conta = new Conta(
                 model.NomeCompleto,
-                model.Email,
                 model.Senha,
+                model.Email,
                 model.DataNasc,
-                model.Telefone,
-                model.Perfil
+                model.Telefone
            );
 
            _contaRepository.Insert(conta);

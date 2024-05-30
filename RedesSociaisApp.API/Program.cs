@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using RedesSociaisApp.API.Endpoints;
 using RedesSociaisApp.Infrastructure.Persistence;
 using RedesSociaisApp.Infrastructure;
+using System.Text.Json.Serialization;
+using RedesSociaisApp.Application;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddControllers().AddJsonOptions(x =>
+{
+    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
+builder.Services
+    .AddApplication()
+    .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
@@ -22,8 +30,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.RegisterContasEndpoints();
+app.MapControllers();
 
 app.Run();
 

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RedesSociaisApp.Domain\RedesSociaisApp.Domain.csproj" />
     <ProjectReference Include="..\RedesSociaisApp.Infrastructure\RedesSociaisApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\RedesSociaisApp.Application\RedesSociaisApp.Application.csproj" />
   </ItemGroup>
 
 </Project>
