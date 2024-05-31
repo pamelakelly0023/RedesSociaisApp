@@ -20,7 +20,8 @@ namespace RedesSociaisApp.Infrastructure.Repositories
 
         public void Delete(Conta conta)
         {
-            throw new NotImplementedException();
+            _context.Contas.Remove(conta);
+            _context.SaveChanges(); 
         }
 
         public Conta? GetById(int id)

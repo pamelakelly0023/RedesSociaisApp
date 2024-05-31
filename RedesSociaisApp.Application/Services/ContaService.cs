@@ -12,6 +12,20 @@ namespace RedesSociaisApp.Application.Services
     {
         private readonly IContaRepository _contaRepository = contaRepository;
 
+        public ResultViewModel Delete(int id)
+        {
+            var conta = _contaRepository.GetById(id);
+            if(conta is null)
+            {
+                return ResultViewModel.Error("Not Found");
+            }
+
+            ///conta.SetAsDeleted();
+            _contaRepository.Delete(conta);
+
+            return ResultViewModel.Success();
+        }
+
         public ResultViewModel<Conta?> GetById(int id)
         {
             var conta = _contaRepository.GetById(id);

@@ -19,6 +19,7 @@ namespace RedesSociaisApp.API.Controllers
         {
             _contaService = contaService;
         }
+
         [HttpGet("{id}")]
         public IActionResult GetById( int id)
         {
@@ -39,7 +40,7 @@ namespace RedesSociaisApp.API.Controllers
 
             return CreatedAtAction(nameof(GetById), new { id = result} , model);
         }
-        
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, UpdateContaInputModel model)
         {
@@ -48,6 +49,14 @@ namespace RedesSociaisApp.API.Controllers
             return !result.IsSuccess ? NotFound() : NoContent();
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var result = _contaService.Delete(id);
+
+            return !result.IsSuccess ? NotFound() : NoContent();
+
+        }
 
 
     }

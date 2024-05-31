@@ -12,5 +12,6 @@ namespace RedesSociaisApp.Application.Services
         ResultViewModel<Conta?> GetById(int id);
         ResultViewModel Insert(CreateContaInputModel model);
         ResultViewModel Update(int id, UpdateContaInputModel model);
+        ResultViewModel Delete(int id);
     }
 }
