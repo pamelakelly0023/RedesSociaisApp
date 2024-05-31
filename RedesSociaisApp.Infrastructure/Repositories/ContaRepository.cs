@@ -41,7 +41,8 @@ namespace RedesSociaisApp.Infrastructure.Repositories
 
         public void Update(Conta conta)
         {
-            throw new NotImplementedException();
+            _context.Contas.Update(conta);
+            _context.SaveChanges();
         }
     }
 }

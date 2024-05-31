@@ -35,5 +35,21 @@ namespace RedesSociaisApp.Application.Services
 
            return ResultViewModel.Success();
         }
+
+        public ResultViewModel Update(int id, UpdateContaInputModel model)
+        {
+            var conta = _contaRepository.GetById(id);
+
+            if(conta is null)
+            {
+                return  ResultViewModel.Error("Not Found");
+            }
+
+            conta.Update(model.NomeCompleto, model.DataNasc, model.Telefone);
+            _contaRepository.Update(conta);
+
+            return ResultViewModel.Success();
+
+        }
     }
 }

@@ -24,6 +24,12 @@ namespace RedesSociaisApp.Domain.Entities
         public DateTime DataNasc { get; private set; }
         public string Telefone { get; private set; }
         public Perfil Perfil{ get; private set; }
+        public void Update(string nomeCompleto, DateTime dataNasc, string telefone) 
+        {
+            NomeCompleto = nomeCompleto;
+            DataNasc = dataNasc;
+            Telefone = telefone;
+        }
         
     }
 }

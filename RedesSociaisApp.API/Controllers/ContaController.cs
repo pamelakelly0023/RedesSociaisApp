@@ -37,8 +37,18 @@ namespace RedesSociaisApp.API.Controllers
         {
             var result = _contaService.Insert(model);
 
-            //return Ok(result);
             return CreatedAtAction(nameof(GetById), new { id = result} , model);
         }
+        
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, UpdateContaInputModel model)
+        {
+            var result = _contaService.Update(id, model);
+
+            return !result.IsSuccess ? NotFound() : NoContent();
+        }
+
+
+
     }
 }
