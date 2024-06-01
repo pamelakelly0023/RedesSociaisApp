@@ -21,7 +21,7 @@ namespace RedesSociaisApp.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById( int id)
+        public IActionResult ObterConta( int id)
         {
             var result = _contaService.GetById(id);
 
@@ -34,15 +34,15 @@ namespace RedesSociaisApp.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(CreateContaInputModel model)
+        public IActionResult Cadastrar(CreateContaInputModel model)
         {
             var result = _contaService.Insert(model);
 
-            return CreatedAtAction(nameof(GetById), new { id = result} , model);
+            return CreatedAtAction(nameof(ObterConta), new { id = result} , model);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, UpdateContaInputModel model)
+        public IActionResult Atualizar(int id, UpdateContaInputModel model)
         {
             var result = _contaService.Update(id, model);
 
@@ -50,13 +50,22 @@ namespace RedesSociaisApp.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Excluir(int id)
         {
             var result = _contaService.Delete(id);
 
             return !result.IsSuccess ? NotFound() : NoContent();
 
         }
+
+        [HttpPut("mudar-senha/{id}")]
+        public IActionResult MudarSenha(int id, UpdateSenhaContaInputModel model)
+        {
+            var result = _contaService.MudarSenha(id, model);
+
+            return !result.IsSuccess ? NotFound() : NoContent();
+        }
+
 
 
     }
