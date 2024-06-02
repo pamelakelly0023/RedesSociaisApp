@@ -6,17 +6,21 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace RedesSociaisApp.Infrastructure.Auth
 {
-    public class AuthService(IConfiguration configuration) : IAuthService
+    public class AuthService(IConfiguration configuration, UserManager<IdentityUser> userManager) : IAuthService
     {
         private readonly IConfiguration _configuration = configuration;
+        private readonly UserManager<IdentityUser> _userManager = userManager;
         public string GerarToken(string email, string role)
         {
-           var issuer = _configuration["JWT:Issuer"];
+
+            var issuer = _configuration["JWT:Issuer"];
             var audience = _configuration["JWT:Audience"];
 
             var key = new SymmetricSecurityKey(
@@ -63,5 +67,6 @@ namespace RedesSociaisApp.Infrastructure.Auth
                 return builder.ToString();
             }
         }
+
     }
 }

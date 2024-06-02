@@ -18,6 +18,14 @@ namespace RedesSociaisApp.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
+        public Conta? GetByEmail(string email)
+        {
+            var conta = _context.Contas
+                .SingleOrDefault(c => c.Email == email);
+
+            return conta;
+        }
+
         public void Delete(Conta conta)
         {
             _context.Contas.Remove(conta);

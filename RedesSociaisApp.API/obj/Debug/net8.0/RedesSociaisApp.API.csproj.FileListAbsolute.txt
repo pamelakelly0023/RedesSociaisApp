@@ -111,3 +111,11 @@ D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\MySqlCon
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\RedesSociaisApp.Application.dll
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\RedesSociaisApp.Application.pdb
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

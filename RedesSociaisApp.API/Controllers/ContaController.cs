@@ -66,6 +66,13 @@ namespace RedesSociaisApp.API.Controllers
             return !result.IsSuccess ? NotFound() : NoContent();
         }
 
+        [HttpPut("login")]
+        public IActionResult Login (LoginInputModel model)
+        {
+            var result = _contaService.Login(model);
+            return !result.IsSuccess ? BadRequest(result) : Ok(result);
+        }
+
 
 
     }

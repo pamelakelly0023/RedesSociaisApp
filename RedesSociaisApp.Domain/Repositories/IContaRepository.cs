@@ -9,6 +9,7 @@ namespace RedesSociaisApp.Domain.Repositories
     public interface IContaRepository
     {
         Conta? GetById(int id);
+        Conta? GetByEmail(string email);
         int Insert(Conta conta);
         void Update(Conta conta);
         void Delete(Conta conta);
