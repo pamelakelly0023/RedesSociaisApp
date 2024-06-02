@@ -2,12 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RedesSociaisApp.Domain.Repositories;
+using RedesSociaisApp.Infrastructure.Auth;
 using RedesSociaisApp.Infrastructure.Persistence;
 using RedesSociaisApp.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace RedesSociaisApp.Infrastructure
 {
@@ -20,7 +25,8 @@ namespace RedesSociaisApp.Infrastructure
         {
             services
                 .AddData(configuration)
-                .AddRepositories();
+                .AddRepositories()
+                .AddAuth(configuration);;
 
             return services;
         }
@@ -46,6 +52,25 @@ namespace RedesSociaisApp.Infrastructure
 
             return services;
             
+        }
+
+        private static IServiceCollection AddAuth(this IServiceCollection services,  IConfiguration configuration)
+        {
+            services
+            .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            options.TokenValidationParameters = new TokenValidationParameters()
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudience = configuration["JWT:Audience"],
+                ValidIssuer = configuration["JWT:Issuer"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"]))
+            });
+            services.AddScoped<IAuthService, AuthService>();
+            return services;
         }
     }
 }
