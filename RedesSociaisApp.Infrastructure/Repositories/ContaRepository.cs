@@ -9,9 +9,10 @@ using RedesSociaisApp.Infrastructure.Persistence;
 
 namespace RedesSociaisApp.Infrastructure.Repositories
 {
-    public class ContaRepository(RedesSociaisDbContext context) : IContaRepository
+    public class ContaRepository : IContaRepository
     {
-        private readonly RedesSociaisDbContext _context = context;
+        private readonly RedesSociaisDbContext _context;
+        public ContaRepository(RedesSociaisDbContext context) => _context = context;
 
         public void AddPerfil(Perfil perfil)
         {

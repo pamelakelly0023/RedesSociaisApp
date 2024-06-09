@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RedesSociaisApp.Domain.Entities;
-using RedesSociaisApp.Domain;
+using System.Reflection;
 
 namespace RedesSociaisApp.Infrastructure.Persistence
 {
@@ -14,13 +10,15 @@ namespace RedesSociaisApp.Infrastructure.Persistence
             DbContextOptions<RedesSociaisDbContext> options)
             : base(options)
         { }
-
+        
         public DbSet<Conta> Contas { get; set; }
         public DbSet<Perfil> Perfis{ get; set; }
         public DbSet<Publicacao> Publicacoes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            
             builder.Entity<Conta>(e => {
                 e.HasKey(p => p.Id);
                 e.HasOne(p => p.Perfil)

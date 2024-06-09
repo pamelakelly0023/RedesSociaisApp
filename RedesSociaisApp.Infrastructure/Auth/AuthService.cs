@@ -13,10 +13,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace RedesSociaisApp.Infrastructure.Auth
 {
-    public class AuthService(IConfiguration configuration, UserManager<IdentityUser> userManager) : IAuthService
+    public class AuthService(IConfiguration configuration) : IAuthService
     {
         private readonly IConfiguration _configuration = configuration;
-        private readonly UserManager<IdentityUser> _userManager = userManager;
         public string GerarToken(string email, string role)
         {
 

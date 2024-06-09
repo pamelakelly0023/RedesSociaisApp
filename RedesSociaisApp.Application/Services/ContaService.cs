@@ -9,11 +9,11 @@ using RedesSociaisApp.Infrastructure.Auth;
 
 namespace RedesSociaisApp.Application.Services
 {
-    public class ContaService(IContaRepository contaRepository, IAuthService authService) : IContaService
+    public class ContaService(IContaRepository contaRepository) : IContaService
     {
         private readonly IContaRepository _contaRepository = contaRepository;
         
-        private readonly IAuthService _authService = authService ;
+        // private readonly IAuthService _authService = authService ;
 
         public ResultViewModel Delete(int id)
         {
@@ -65,20 +65,25 @@ namespace RedesSociaisApp.Application.Services
 
         public ResultViewModel<LoginViewModel?> Login(LoginInputModel model)
         {
-            var hash = _authService.Hash(model.Senha);
-            var conta = _contaRepository.GetByEmail(model.Email);
-
-            if(conta is null || conta.Senha != hash)
-            {
-                 return ResultViewModel<LoginViewModel?>.Error("Error");
-            }     
-
-            var token = _authService.GerarToken(conta.Email, conta.Role);   
-
-            var viewModel = new LoginViewModel(token);
-            
-            return ResultViewModel<LoginViewModel?>.Success(viewModel);
+            throw new NotImplementedException();
         }
+
+        // public ResultViewModel<LoginViewModel?> Login(LoginInputModel model)
+        // {
+        //     var hash = _authService.Hash(model.Senha);
+        //     var conta = _contaRepository.GetByEmail(model.Email);
+
+        //     if(conta is null || conta.Senha != hash)
+        //     {
+        //          return ResultViewModel<LoginViewModel?>.Error("Error");
+        //     }     
+
+        //     var token = _authService.GerarToken(conta.Email, conta.Role);   
+
+        //     var viewModel = new LoginViewModel(token);
+
+        //     return ResultViewModel<LoginViewModel?>.Success(viewModel);
+        // }
 
         public ResultViewModel MudarSenha(int id, UpdateSenhaContaInputModel model)
         {

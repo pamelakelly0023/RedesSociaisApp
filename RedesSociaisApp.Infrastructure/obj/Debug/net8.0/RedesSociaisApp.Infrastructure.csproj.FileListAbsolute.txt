@@ -1,6 +1,10 @@
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Infrastructure.deps.json
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Infrastructure.runtimeconfig.json
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Infrastructure.dll
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Infrastructure.pdb
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Domain.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Domain.pdb
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.csproj.AssemblyReference.cache
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.AssemblyInfoInputs.cache
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.AssemblyInfo.cs
@@ -9,10 +13,6 @@ D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.dll
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\refint\RedesSociaisApp.Infrastructure.dll
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.pdb
-D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\ref\RedesSociaisApp.Infrastructure.dll
-D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Infrastructure.runtimeconfig.json
-D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Domain.dll
-D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\bin\Debug\net8.0\RedesSociaisApp.Domain.pdb
-D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.csproj.AssemblyReference.cache
-D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.csproj.CopyComplete
 D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSociaisApp.Infrastructure.genruntimeconfig.cache
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\ref\RedesSociaisApp.Infrastructure.dll
+D:\projects-dotnet\RedesSociaisApp\RedesSociaisApp.Infrastructure\obj\Debug\net8.0\RedesSoc.BE7C0FB1.Up2Date
