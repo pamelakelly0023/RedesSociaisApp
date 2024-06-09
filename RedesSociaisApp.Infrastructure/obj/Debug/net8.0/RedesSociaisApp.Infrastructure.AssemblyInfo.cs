@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RedesSociaisApp.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d784c546fc42ffd0aacb0933a0743c05cd92d913")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47b3dec951e82682d0398077c205048684e3eeea")]
 [assembly: System.Reflection.AssemblyProductAttribute("RedesSociaisApp.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RedesSociaisApp.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
