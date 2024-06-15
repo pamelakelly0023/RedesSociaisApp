@@ -19,12 +19,11 @@ namespace RedesSociaisApp.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Conta? GetByEmail(string email)
+        public Conta? GetByEmailAndPassword(string email, string senha)
         {
-            var conta = _context.Contas
-                .SingleOrDefault(c => c.Email == email);
-
+            var conta = _context.Contas.FirstOrDefault(c => c.Email == email && c.Senha == senha);
             return conta;
+                             
         }
 
         public void Delete(Conta conta)
@@ -54,5 +53,6 @@ namespace RedesSociaisApp.Infrastructure.Repositories
             _context.Contas.Update(conta);
             _context.SaveChanges();
         }
+
     }
 }

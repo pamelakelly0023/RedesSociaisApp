@@ -57,9 +57,8 @@ namespace RedesSociaisApp.Infrastructure.Auth
                 // Concatenação de vários items
                 var builder = new StringBuilder();
 
-                for (int i = 0; i <bytes.Length; i++)
+                for (var i = 0; i < bytes.Length; i++)
                 {
-                    // converte para hexadecimal
                     builder.Append(bytes[i].ToString("x2"));
                 } 
 

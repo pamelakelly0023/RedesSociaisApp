@@ -6,14 +6,23 @@ using RedesSociaisApp.Application.Models;
 using RedesSociaisApp.Domain.Entities;
 using RedesSociaisApp.Domain.Repositories;
 using RedesSociaisApp.Infrastructure.Auth;
+using RedesSociaisApp.Infrastructure.Persistence;
 
 namespace RedesSociaisApp.Application.Services
 {
-    public class ContaService(IContaRepository contaRepository) : IContaService
+    public class ContaService : IContaService
     {
-        private readonly IContaRepository _contaRepository = contaRepository;
+        private readonly IContaRepository _contaRepository;
         
-        // private readonly IAuthService _authService = authService ;
+        private readonly IAuthService _authService;
+        private readonly RedesSociaisDbContext _context;
+
+        public ContaService(IContaRepository contaRepository, IAuthService authService, RedesSociaisDbContext context)
+        {
+            _contaRepository = contaRepository;
+            _authService = authService;
+            _context = context;
+        }
 
         public ResultViewModel Delete(int id)
         {
@@ -27,15 +36,6 @@ namespace RedesSociaisApp.Application.Services
             _contaRepository.Delete(conta);
 
             return ResultViewModel.Success();
-        }
-
-        public ResultViewModel<Conta?> GetByEmail(string email)
-        {
-            var conta = _contaRepository.GetByEmail(email);
-
-            return conta is null ?
-                ResultViewModel<Conta?>.Error("Not Found") : 
-                ResultViewModel<Conta?>.Success(conta);
         }
 
         public ResultViewModel<Conta?> GetById(int id)
@@ -63,27 +63,24 @@ namespace RedesSociaisApp.Application.Services
            return ResultViewModel.Success();
         }
 
+
         public ResultViewModel<LoginViewModel?> Login(LoginInputModel model)
         {
-            throw new NotImplementedException();
+            var hash = _authService.Hash(model.Senha);
+            var conta = _contaRepository.GetByEmailAndPassword(model.Email, model.Senha);
+            
+
+            if(conta is null )
+            {
+                 return ResultViewModel<LoginViewModel?>.Error("Erro ao validar os dados");
+            }     
+
+            var token = _authService.GerarToken(conta.Email, conta.Role);   
+
+            var viewModel = new LoginViewModel(token);
+
+            return ResultViewModel<LoginViewModel?>.Success(viewModel);
         }
-
-        // public ResultViewModel<LoginViewModel?> Login(LoginInputModel model)
-        // {
-        //     var hash = _authService.Hash(model.Senha);
-        //     var conta = _contaRepository.GetByEmail(model.Email);
-
-        //     if(conta is null || conta.Senha != hash)
-        //     {
-        //          return ResultViewModel<LoginViewModel?>.Error("Error");
-        //     }     
-
-        //     var token = _authService.GerarToken(conta.Email, conta.Role);   
-
-        //     var viewModel = new LoginViewModel(token);
-
-        //     return ResultViewModel<LoginViewModel?>.Success(viewModel);
-        // }
 
         public ResultViewModel MudarSenha(int id, UpdateSenhaContaInputModel model)
         {
