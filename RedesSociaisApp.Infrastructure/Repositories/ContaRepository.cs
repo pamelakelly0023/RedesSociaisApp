@@ -16,7 +16,8 @@ namespace RedesSociaisApp.Infrastructure.Repositories
 
         public void AddPerfil(Perfil perfil)
         {
-            throw new NotImplementedException();
+            _context.Perfis.Add(perfil);
+            _context.SaveChanges();
         }
 
         public Conta? GetByEmailAndPassword(string email, string senha)

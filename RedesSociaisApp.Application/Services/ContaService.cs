@@ -15,13 +15,11 @@ namespace RedesSociaisApp.Application.Services
         private readonly IContaRepository _contaRepository;
         
         private readonly IAuthService _authService;
-        private readonly RedesSociaisDbContext _context;
 
-        public ContaService(IContaRepository contaRepository, IAuthService authService, RedesSociaisDbContext context)
+        public ContaService(IContaRepository contaRepository, IAuthService authService)
         {
             _contaRepository = contaRepository;
             _authService = authService;
-            _context = context;
         }
 
         public ResultViewModel Delete(int id)
@@ -32,7 +30,7 @@ namespace RedesSociaisApp.Application.Services
                 return ResultViewModel.Error("Not Found");
             }
 
-            ///conta.SetAsDeleted();
+            //conta.SetAsDeleted();
             _contaRepository.Delete(conta);
 
             return ResultViewModel.Success();
@@ -47,20 +45,30 @@ namespace RedesSociaisApp.Application.Services
                 ResultViewModel<Conta?>.Success(conta);
         }
 
-        public ResultViewModel Insert(CreateContaInputModel model)
+        public ResultViewModel<int> Insert(int id, CreateContaInputModel model)
         {
-           var conta = new Conta(
+            var perfil = new Perfil(
+                id,
+                model.Perfil.NomeExibicao,
+                model.Perfil.Sobre,
+                model.Perfil.Foto,
+                model.Perfil.Profissao,
+                model.Perfil.Localidade    
+            );
+
+            var conta = new Conta(
                 model.NomeCompleto,
                 model.Senha,
                 model.Role,
                 model.Email,
+                perfil,
                 model.DataNasc,
                 model.Telefone
            );
 
            _contaRepository.Insert(conta);
 
-           return ResultViewModel.Success();
+           return ResultViewModel<int>.Success(conta.Id);
         }
 
 
@@ -99,6 +107,29 @@ namespace RedesSociaisApp.Application.Services
             
         }
 
+        public ResultViewModel Perfil(int id, CreatePerfilInputModel model)
+        {
+            var conta = _contaRepository.GetById(id);
+
+            if(conta is null)
+            {
+                return ResultViewModel.Error("Not found");
+            }
+
+            var perfil = new Perfil(
+                id,
+                model.NomeExibicao,
+                model.Sobre,
+                model.Foto,
+                model.Profissao,
+                model.Localidade    
+            );
+
+            _contaRepository.AddPerfil(perfil);
+
+            return ResultViewModel.Success();
+        }
+
         public ResultViewModel Update(int id, UpdateContaInputModel model)
         {
             var conta = _contaRepository.GetById(id);
@@ -114,5 +145,6 @@ namespace RedesSociaisApp.Application.Services
             return ResultViewModel.Success();
 
         }
+
     }
 }

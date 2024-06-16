@@ -21,7 +21,7 @@ namespace RedesSociaisApp.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult ObterConta( int id)
+        public IActionResult ObterConta(int id)
         {
             var result = _contaService.GetById(id);
 
@@ -34,9 +34,9 @@ namespace RedesSociaisApp.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(CreateContaInputModel model)
+        public IActionResult Cadastrar(int id, CreateContaInputModel model)
         {
-            var result = _contaService.Insert(model);
+            var result = _contaService.Insert(id, model);
 
             return CreatedAtAction(nameof(ObterConta), new { id = result} , model);
         }
@@ -72,8 +72,6 @@ namespace RedesSociaisApp.API.Controllers
             var result = _contaService.Login(model);
             return !result.IsSuccess ? BadRequest(result) : Ok(result);
         }
-
-
 
     }
 }

@@ -8,13 +8,14 @@ namespace RedesSociaisApp.Domain.Entities
     public class Conta : BaseEntity
     {
         protected Conta() {}
-        public Conta(string nomeCompleto, string senha, string role, string email, DateTime dataNasc, string telefone)
+        public Conta(string nomeCompleto, string senha, string role, string email, Perfil perfil, DateTime dataNasc, string telefone)
             : base()
         {
             NomeCompleto = nomeCompleto;
             Senha = senha;
             Role = role ?? "client";
             Email = email;
+            Perfil = perfil;
             DataNasc = dataNasc;
             Telefone = telefone;
         }
