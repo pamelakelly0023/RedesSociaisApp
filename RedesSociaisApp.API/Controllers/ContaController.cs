@@ -34,9 +34,9 @@ namespace RedesSociaisApp.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(int id, CreateContaInputModel model)
+        public IActionResult Cadastrar(CreateContaInputModel model)
         {
-            var result = _contaService.Insert(id, model);
+            var result = _contaService.Insert(model);
 
             return CreatedAtAction(nameof(ObterConta), new { id = result} , model);
         }

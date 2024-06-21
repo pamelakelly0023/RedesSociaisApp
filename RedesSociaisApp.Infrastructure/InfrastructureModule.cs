@@ -36,7 +36,7 @@ namespace RedesSociaisApp.Infrastructure
             var connectionString = configuration.GetConnectionString("RedesSociaisDb");         
 
             services.AddDbContext<RedesSociaisDbContext>(options =>
-                options.UseSqlite(connectionString)
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
             );
  
             return services;

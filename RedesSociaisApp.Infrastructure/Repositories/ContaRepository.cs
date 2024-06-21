@@ -36,6 +36,7 @@ namespace RedesSociaisApp.Infrastructure.Repositories
         public Conta? GetById(int id)
         {
             var conta = _context.Contas
+                .Include(c => c.Perfil)
                 .SingleOrDefault(c => c.Id == id);
 
             return conta;

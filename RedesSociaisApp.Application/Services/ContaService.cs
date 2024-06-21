@@ -36,19 +36,18 @@ namespace RedesSociaisApp.Application.Services
             return ResultViewModel.Success();
         }
 
-        public ResultViewModel<Conta?> GetById(int id)
+        public ResultViewModel<ContaViewModel?> GetById(int id)
         {
             var conta = _contaRepository.GetById(id);
 
             return conta is null ?
-                ResultViewModel<Conta?>.Error("Not Found") : 
-                ResultViewModel<Conta?>.Success(conta);
+                ResultViewModel<ContaViewModel?>.Error("Not Found") : 
+                ResultViewModel<ContaViewModel?>.Success(ContaViewModel.FromEntity(conta));
         }
 
-        public ResultViewModel<int> Insert(int id, CreateContaInputModel model)
+        public ResultViewModel<int> Insert(CreateContaInputModel model)
         {
             var perfil = new Perfil(
-                id,
                 model.Perfil.NomeExibicao,
                 model.Perfil.Sobre,
                 model.Perfil.Foto,
@@ -105,29 +104,6 @@ namespace RedesSociaisApp.Application.Services
             
            return  ResultViewModel.Error("Not Found");
             
-        }
-
-        public ResultViewModel Perfil(int id, CreatePerfilInputModel model)
-        {
-            var conta = _contaRepository.GetById(id);
-
-            if(conta is null)
-            {
-                return ResultViewModel.Error("Not found");
-            }
-
-            var perfil = new Perfil(
-                id,
-                model.NomeExibicao,
-                model.Sobre,
-                model.Foto,
-                model.Profissao,
-                model.Localidade    
-            );
-
-            _contaRepository.AddPerfil(perfil);
-
-            return ResultViewModel.Success();
         }
 
         public ResultViewModel Update(int id, UpdateContaInputModel model)

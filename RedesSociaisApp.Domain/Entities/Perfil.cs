@@ -8,10 +8,10 @@ namespace RedesSociaisApp.Domain.Entities
     public class Perfil : BaseEntity
     {
         protected Perfil(){}
-        public Perfil(int idConta, string nomeExibicao, string sobre, string foto, string profissao, string localidade)
+        public Perfil(string nomeExibicao, string sobre, string foto, string profissao, string localidade)
             : base()
         {
-            IdConta = idConta;
+            // IdConta = idConta;
             NomeExibicao = nomeExibicao;
             Sobre = sobre;
             Foto = foto;
