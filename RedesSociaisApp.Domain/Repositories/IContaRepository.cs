@@ -13,6 +13,5 @@ namespace RedesSociaisApp.Domain.Repositories
         int Insert(Conta conta);
         void Update(Conta conta);
         void Delete(Conta conta);
-        void AddPerfil(Perfil perfil);
     }
 }

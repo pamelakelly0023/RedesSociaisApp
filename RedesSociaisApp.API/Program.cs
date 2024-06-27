@@ -5,20 +5,26 @@ using System.Text.Json.Serialization;
 using RedesSociaisApp.Application;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
+using RedesSociaisApp.API.Endpoints;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddApplication()
+    .AddEndpointsApiExplorer()
     .AddInfrastructure(builder.Configuration); 
+
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
     
-builder.Services.AddControllers().AddJsonOptions(x =>
-   x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
+// builder.Services.AddControllers().AddJsonOptions(x =>
+//    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -55,9 +61,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapContaEndpoint();
 app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
 
 app.Run();
 

@@ -71,10 +71,6 @@ namespace RedesSociaisApp.Infrastructure
                     });
 
                 services.AddScoped<IAuthService, AuthService>();
-
-                // services.AddIdentity<IdentityUser, IdentityRole>()
-                //     .AddEntityFrameworkStores<RedesSociaisDbContext>()
-                //     .AddDefaultTokenProviders();
                     
                 return services;
             }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -14,18 +15,10 @@ namespace RedesSociaisApp.Infrastructure.Repositories
         private readonly RedesSociaisDbContext _context;
         public ContaRepository(RedesSociaisDbContext context) => _context = context;
 
-        public void AddPerfil(Perfil perfil)
-        {
-            _context.Perfis.Add(perfil);
-            _context.SaveChanges();
-        }
 
         public Conta? GetByEmailAndPassword(string email, string senha)
-        {
-            var conta = _context.Contas.FirstOrDefault(c => c.Email == email && c.Senha == senha);
-            return conta;
-                             
-        }
+            => _context.Contas.FirstOrDefault(c => c.Email == email && c.Senha == senha);                     
+        
 
         public void Delete(Conta conta)
         {
@@ -34,16 +27,14 @@ namespace RedesSociaisApp.Infrastructure.Repositories
         }
 
         public Conta? GetById(int id)
-        {
-            var conta = _context.Contas
-                .Include(c => c.Perfil)
-                .SingleOrDefault(c => c.Id == id);
+        => _context.Contas
+            .Include(c => c.Perfil)
+            .SingleOrDefault(c => c.Id == id);
 
-            return conta;
-        }
 
         public int Insert(Conta conta)
         {
+            
             _context.Contas.Add(conta);
             _context.SaveChanges();
 

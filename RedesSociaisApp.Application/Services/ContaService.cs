@@ -47,6 +47,7 @@ namespace RedesSociaisApp.Application.Services
 
         public ResultViewModel<int> Insert(CreateContaInputModel model)
         {
+
             var perfil = new Perfil(
                 model.Perfil.NomeExibicao,
                 model.Perfil.Sobre,
@@ -73,11 +74,10 @@ namespace RedesSociaisApp.Application.Services
 
         public ResultViewModel<LoginViewModel?> Login(LoginInputModel model)
         {
-            var hash = _authService.Hash(model.Senha);
             var conta = _contaRepository.GetByEmailAndPassword(model.Email, model.Senha);
             
 
-            if(conta is null )
+            if(conta is null)
             {
                  return ResultViewModel<LoginViewModel?>.Error("Erro ao validar os dados");
             }     

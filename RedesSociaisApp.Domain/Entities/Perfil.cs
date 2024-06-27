@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace RedesSociaisApp.Domain.Entities
 {
     public class Perfil : BaseEntity
@@ -11,7 +6,6 @@ namespace RedesSociaisApp.Domain.Entities
         public Perfil(string nomeExibicao, string sobre, string foto, string profissao, string localidade)
             : base()
         {
-            // IdConta = idConta;
             NomeExibicao = nomeExibicao;
             Sobre = sobre;
             Foto = foto;
