@@ -22,55 +22,20 @@ namespace RedesSociaisApp.Application.Services
             _authService = authService;
         }
 
-        public ResultViewModel Delete(int id)
-        {
-            var conta = _contaRepository.GetById(id);
-            if(conta is null)
-            {
-                return ResultViewModel.Error("Not Found");
-            }
+        // Migrar os seguintes serviços para se adequar a implementação do padrão mediator
+        // public ResultViewModel Delete(int id)
+        // {
+        //     var conta = _contaRepository.GetById(id);
+        //     if(conta is null)
+        //     {
+        //         return ResultViewModel.Error("Not Found");
+        //     }
 
-            //conta.SetAsDeleted();
-            _contaRepository.Delete(conta);
+        //     //conta.SetAsDeleted();
+        //     _contaRepository.Delete(conta);
 
-            return ResultViewModel.Success();
-        }
-
-        public ResultViewModel<ContaViewModel?> GetById(int id)
-        {
-            var conta = _contaRepository.GetById(id);
-
-            return conta is null ?
-                ResultViewModel<ContaViewModel?>.Error("Not Found") : 
-                ResultViewModel<ContaViewModel?>.Success(ContaViewModel.FromEntity(conta));
-        }
-
-        public ResultViewModel<int> Insert(CreateContaInputModel model)
-        {
-
-            var perfil = new Perfil(
-                model.Perfil.NomeExibicao,
-                model.Perfil.Sobre,
-                model.Perfil.Foto,
-                model.Perfil.Profissao,
-                model.Perfil.Localidade    
-            );
-
-            var conta = new Conta(
-                model.NomeCompleto,
-                model.Senha,
-                model.Role,
-                model.Email,
-                perfil,
-                model.DataNasc,
-                model.Telefone
-           );
-
-           _contaRepository.Insert(conta);
-
-           return ResultViewModel<int>.Success(conta.Id);
-        }
-
+        //     return ResultViewModel.Success();
+        // }
 
         public ResultViewModel<LoginViewModel?> Login(LoginInputModel model)
         {
@@ -89,38 +54,38 @@ namespace RedesSociaisApp.Application.Services
             return ResultViewModel<LoginViewModel?>.Success(viewModel);
         }
 
-        public ResultViewModel MudarSenha(int id, UpdateSenhaContaInputModel model)
-        {
-            var conta = _contaRepository.GetById(id);
+        // public ResultViewModel MudarSenha(int id, UpdateSenhaContaInputModel model)
+        // {
+        //     var conta = _contaRepository.GetById(id);
 
-            if(conta != null && conta.Senha == model.Senha)
-            {
-                conta.MudarSenha(model.NovaSenha);
-                _contaRepository.Update(conta);
+        //     if(conta != null && conta.Senha == model.Senha)
+        //     {
+        //         conta.MudarSenha(model.NovaSenha);
+        //         _contaRepository.Update(conta);
 
-                return ResultViewModel.Success();
+        //         return ResultViewModel.Success();
                 
-            }
+        //     }
             
-           return  ResultViewModel.Error("Not Found");
+        //    return  ResultViewModel.Error("Not Found");
             
-        }
+        // }
 
-        public ResultViewModel Update(int id, UpdateContaInputModel model)
-        {
-            var conta = _contaRepository.GetById(id);
+        // public ResultViewModel Update(int id, UpdateContaInputModel model)
+        // {
+        //     var conta = _contaRepository.GetById(id);
 
-            if(conta is null)
-            {
-                return  ResultViewModel.Error("Not Found");
-            }
+        //     if(conta is null)
+        //     {
+        //         return  ResultViewModel.Error("Not Found");
+        //     }
 
-            conta.Update(model.NomeCompleto, model.DataNasc, model.Telefone);
-            _contaRepository.Update(conta);
+        //     conta.Update(model.NomeCompleto, model.DataNasc, model.Telefone);
+        //     _contaRepository.Update(conta);
 
-            return ResultViewModel.Success();
+        //     return ResultViewModel.Success();
 
-        }
+        // }
 
     }
 }

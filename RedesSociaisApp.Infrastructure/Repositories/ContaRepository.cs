@@ -26,19 +26,22 @@ namespace RedesSociaisApp.Infrastructure.Repositories
             _context.SaveChanges(); 
         }
 
-        public Conta? GetById(int id)
-        => _context.Contas
+        public Task<Conta?> GetById(int id)
+        {
+            var contaId = _context.Contas
             .Include(c => c.Perfil)
             .SingleOrDefault(c => c.Id == id);
 
+            return Task.FromResult(contaId);
+        }  
 
-        public int Insert(Conta conta)
-        {
-            
+
+        public Task<int> Insert(Conta conta)
+        {   
             _context.Contas.Add(conta);
             _context.SaveChanges();
 
-            return conta.Id;
+            return Task.FromResult(conta.Id);
         }
 
         public void Update(Conta conta)

@@ -6,6 +6,8 @@ using RedesSociaisApp.Application;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
 using RedesSociaisApp.API.Endpoints;
+using System.Reflection;
+using MediatR;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +19,6 @@ builder.Services
 
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
-    
 
 // builder.Services.AddControllers().AddJsonOptions(x =>
 //    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);

@@ -8,9 +8,9 @@ namespace RedesSociaisApp.Domain.Repositories
 {
     public interface IContaRepository
     {
-        Conta? GetById(int id);
+        Task<Conta?> GetById(int id);
         Conta? GetByEmailAndPassword(string email, string senha);
-        int Insert(Conta conta);
+        Task<int> Insert(Conta conta);
         void Update(Conta conta);
         void Delete(Conta conta);
     }
