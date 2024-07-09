@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using OperationResult;
 using RedesSociaisApp.Application.Models;
 using RedesSociaisApp.Application.Requests;
+using RedesSociaisApp.Application.Requests.Conta;
 using RedesSociaisApp.Application.Services;
 
 namespace RedesSociaisApp.API.Endpoints
 {
-    public static class ContaEndpoint
+    public static class ContaEndpoints
     {
         public static void MapContaEndpoint(this IEndpointRouteBuilder app)
         {
@@ -33,15 +34,15 @@ namespace RedesSociaisApp.API.Endpoints
 
             }).WithName("Cadastrar Conta");
 
+
+            conta.MapPut("{id:int}", (IMediator mediator, AlterarContaRequest request) =>
+            {
+                var conta = mediator.Send(request);
+
+                return !conta.Result.IsSuccess ? Results.NotFound() : Results.NoContent();
+            }).WithName("Alterar Conta").RequireAuthorization();
+
             // Ajustar os seguintes endPoints para utilizar o padrão mediator
-
-            // conta.MapPut("{id:int}", (int id, UpdateContaInputModel model, IContaService contaService) =>
-            // {
-            //     var result = contaService.Update(id, model);
-
-            //     return !result.IsSuccess ? Results.NotFound() : Results.NoContent();
-            // }).WithName("Alterar Conta").RequireAuthorization();
-
 
             // conta.MapDelete("{id:int}", (int id, IContaService contaService) =>
             // {

@@ -1,18 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MediatR;
-using OperationResult;
+using RedesSociaisApp.Application.Models;
 using RedesSociaisApp.Application.Requests;
-using RedesSociaisApp.Application.Services;
 using RedesSociaisApp.Domain.Entities;
 using RedesSociaisApp.Domain.Repositories;
-using RedesSociaisApp.Infrastructure.Auth;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class CriarContaRequestHandler : IRequestHandler<CriarContaRequest, int>
+    public class CriarContaRequestHandler : IRequestHandler<CriarContaRequest, ResultViewModel>
     {
         private readonly IContaRepository _contaRepository;
 
@@ -21,13 +15,29 @@ namespace RedesSociaisApp.Application.Handlers
             _contaRepository = contaRepository;
             
         }
-        public async Task<int> Handle(CriarContaRequest request, CancellationToken cancellationToken)
+        public async Task<ResultViewModel> Handle(CriarContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = request.ToEntity();
+            var perfil = new Perfil (
+                request.Perfil.NomeExibicao,
+                request.Perfil.Sobre,
+                request.Perfil.Foto,
+                request.Perfil.Profissao,
+                request.Perfil.Localidade 
+            );
 
-            var id = await _contaRepository.Insert(conta);
+            var conta = new Conta(
+                request.NomeCompleto,
+                request.Senha,
+                request.Role,
+                request.Email,
+                perfil,
+                request.DataNasc,
+                request.Telefone
+            );    
+           
+            await _contaRepository.Insert(conta);
 
-            return id;
+            return ResultViewModel.Success();
            
         }
     }

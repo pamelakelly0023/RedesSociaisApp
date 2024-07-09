@@ -23,12 +23,13 @@ namespace RedesSociaisApp.Application.Handlers
 
         public async Task<ResultViewModel<ContaViewModel>> Handle(ObterContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = await _contaRepository.GetById(request.ContaId);
+            var conta = _contaRepository.GetById(request.ContaId);
 
             if( conta is null )
             {
                 Results.NotFound();
             }
+
             return ResultViewModel<ContaViewModel>.Success(ContaViewModel.FromEntity(conta));
            
         }
