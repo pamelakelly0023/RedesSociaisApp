@@ -23,19 +23,6 @@ namespace RedesSociaisApp.Application.Services
         }
 
         // Migrar os seguintes serviços para se adequar a implementação do padrão mediator
-        // public ResultViewModel Delete(int id)
-        // {
-        //     var conta = _contaRepository.GetById(id);
-        //     if(conta is null)
-        //     {
-        //         return ResultViewModel.Error("Not Found");
-        //     }
-
-        //     //conta.SetAsDeleted();
-        //     _contaRepository.Delete(conta);
-
-        //     return ResultViewModel.Success();
-        // }
 
         public ResultViewModel<LoginViewModel?> Login(LoginInputModel model)
         {
@@ -54,22 +41,6 @@ namespace RedesSociaisApp.Application.Services
             return ResultViewModel<LoginViewModel?>.Success(viewModel);
         }
 
-        // public ResultViewModel MudarSenha(int id, UpdateSenhaContaInputModel model)
-        // {
-        //     var conta = _contaRepository.GetById(id);
-
-        //     if(conta != null && conta.Senha == model.Senha)
-        //     {
-        //         conta.MudarSenha(model.NovaSenha);
-        //         _contaRepository.Update(conta);
-
-        //         return ResultViewModel.Success();
-                
-        //     }
-            
-        //    return  ResultViewModel.Error("Not Found");
-            
-        // }
 
     }
 }

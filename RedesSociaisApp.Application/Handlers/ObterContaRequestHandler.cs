@@ -27,7 +27,7 @@ namespace RedesSociaisApp.Application.Handlers
 
             if( conta is null )
             {
-                Results.NotFound();
+               ResultViewModel.Error("Not Found"); 
             }
 
             return ResultViewModel<ContaViewModel>.Success(ContaViewModel.FromEntity(conta));

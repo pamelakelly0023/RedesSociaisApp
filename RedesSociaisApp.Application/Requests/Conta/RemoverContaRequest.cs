@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using RedesSociaisApp.Application.Models;
 
-namespace RedesSociaisApp.Application.Requests
+namespace RedesSociaisApp.Application.Requests.Conta
 {
-    public record ObterContaRequest(int ContaId) : IRequest<ResultViewModel<ContaViewModel>>;
+    public record RemoverContaRequest(int ContaId) : IRequest<ResultViewModel>;
 }

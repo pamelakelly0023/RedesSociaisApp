@@ -42,22 +42,19 @@ namespace RedesSociaisApp.API.Endpoints
                 return !conta.Result.IsSuccess ? Results.NotFound() : Results.NoContent();
             }).WithName("Alterar Conta").RequireAuthorization();
 
-            // Ajustar os seguintes endPoints para utilizar o padrão mediator
+            conta.MapDelete("{id:int}", (IMediator mediator, RemoverContaRequest request) =>
+            {
+                var conta = mediator.Send(request);
 
-            // conta.MapDelete("{id:int}", (int id, IContaService contaService) =>
-            // {
-            //     var result = contaService.Delete(id);
+                return !conta.IsSuccess ? Results.NotFound() : Results.NoContent();
+            }).WithName("Exluir Conta").RequireAuthorization();
 
-            //     return !result.IsSuccess ? Results.NotFound() : Results.NoContent();
-            // }).WithName("Exluir Conta").RequireAuthorization();
+            conta.MapPut("alterar-senha/{id:int}", (IMediator mediator, AlterarSenhaRequest request) =>
+            {
+                var conta = mediator.Send(request);
 
-
-            // conta.MapPut("mudar-senha/{id:int}", (int id, UpdateSenhaContaInputModel model, IContaService contaService) =>
-            // {
-            //     var result = contaService.MudarSenha(id, model);
-
-            //     return !result.IsSuccess ? Results.NotFound() : Results.NoContent();
-            // }).WithName("Alterar Senha").RequireAuthorization();
+                return !conta.IsSuccess ? Results.NotFound() : Results.NoContent();
+            }).WithName("Alterar Senha").RequireAuthorization();
             
 
             conta.MapPut("login", (LoginInputModel model, IContaService contaService) =>
