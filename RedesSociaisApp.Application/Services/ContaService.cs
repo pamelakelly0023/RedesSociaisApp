@@ -41,6 +41,5 @@ namespace RedesSociaisApp.Application.Services
             return ResultViewModel<LoginViewModel?>.Success(viewModel);
         }
 
-
     }
 }

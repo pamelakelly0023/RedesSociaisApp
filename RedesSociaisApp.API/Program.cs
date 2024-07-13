@@ -20,12 +20,6 @@ builder.Services
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
-// builder.Services.AddControllers().AddJsonOptions(x =>
-//    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
-
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
