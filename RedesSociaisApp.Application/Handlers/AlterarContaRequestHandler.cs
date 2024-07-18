@@ -19,7 +19,7 @@ namespace RedesSociaisApp.Application.Handlers
 
         public async Task<ResultViewModel> Handle(AlterarContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = _contaRepository.GetById(request.ContaId);
+            var conta = _contaRepository.GetById(request.Id);
 
             if(conta is null)
             {
@@ -34,9 +34,5 @@ namespace RedesSociaisApp.Application.Handlers
            
         }
 
-        // Task<ResultViewModel> IRequestHandler<AlterarContaRequest, ResultViewModel>.Handle(AlterarContaRequest request, CancellationToken cancellationToken)
-        // {
-        //     throw new NotImplementedException();
-        // }
     }
 }

@@ -23,7 +23,7 @@ namespace RedesSociaisApp.Application.Handlers
 
         public async Task<ResultViewModel<ContaViewModel>> Handle(ObterContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = _contaRepository.GetById(request.ContaId);
+            var conta = _contaRepository.GetById(request.Id);
 
             if( conta is null )
             {
