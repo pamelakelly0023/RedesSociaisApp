@@ -1,14 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OperationResult;
-using RedesSociaisApp.Application.Models;
 using RedesSociaisApp.Application.Requests;
 using RedesSociaisApp.Application.Requests.Conta;
-using RedesSociaisApp.Application.Services;
 
 namespace RedesSociaisApp.API.Endpoints
 {
@@ -20,30 +13,30 @@ namespace RedesSociaisApp.API.Endpoints
 
             conta.MapGet("detalhes/{id}", static async (IMediator mediator, int id)
                 => await mediator.Send(new ObterContaRequest(id)))
-                    .WithName("Detalhes Conta").RequireAuthorization();
+                    .WithName("Detalhes Conta")
+                    .RequireAuthorization();
             
             conta.MapPost("criar", static async (IMediator mediator, CriarContaRequest request)
                 => await mediator.Send(request))
                     .WithName("Cadastrar Conta");
 
-            conta.MapPut("alterar", static async (IMediator mediator, AlterarContaRequest request)
+            conta.MapPut("alterar/", static async (IMediator mediator, AlterarContaRequest request)
                 => await mediator.Send(request))
-                    .WithName("Alterar Conta").RequireAuthorization();
+                    .WithName("Alterar Conta");
 
-            conta.MapDelete("remover/{id}", async (IMediator mediator, [AsParameters]RemoverContaRequest request)
-                => await mediator.Send(request))
-                    .WithName("Exluir Conta").RequireAuthorization();
+            conta.MapDelete("remover/", static async (IMediator mediator, int id)
+                => await mediator.Send(new RemoverContaRequest(id)))
+                    .WithName("Exluir Conta")
+                    .RequireAuthorization();
 
-            conta.MapPut("alterar-senha/{id}", static async (IMediator mediator, [AsParameters]AlterarSenhaContaRequest request)
+            conta.MapPut("alterar-senha/", static async (IMediator mediator, AlterarSenhaContaRequest request)
                 => await mediator.Send(request))
-                    .WithName("Alterar Senha").RequireAuthorization();
+                    .WithName("Alterar Senha")
+                    .RequireAuthorization();
             
-
-            conta.MapPut("login", (LoginInputModel model, IContaService contaService) =>
-            {
-                var result = contaService.Login(model);
-                return !result.IsSuccess ? Results.BadRequest(result) : Results.Ok(result);
-            }).WithName("Login Conta");
+            conta.MapPut("login", static async (IMediator mediator, LoginContaRequest request) 
+                => await mediator.Send(request))
+                    .WithName("Login Conta");
         } 
     }
 }

@@ -7,5 +7,5 @@ using RedesSociaisApp.Application.Models;
 
 namespace RedesSociaisApp.Application.Requests.Conta
 {
-    public record AlterarContaRequest(int ContaId, string NomeCompleto, DateTime DataNasc, string Telefone) : IRequest<ResultViewModel>;
+    public record LoginContaRequest(string Email, string Senha) : IRequest<ResultViewModel<LoginViewModel>>;
 }
