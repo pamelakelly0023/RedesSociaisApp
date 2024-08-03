@@ -16,23 +16,34 @@ namespace RedesSociaisApp.API.Endpoints
                     .WithName("Detalhes Conta")
                     .RequireAuthorization();
             
-            conta.MapPost("criar", static async (IMediator mediator, CriarContaRequest request)
+            conta.MapPost("criar/", static async (IMediator mediator, CriarContaRequest request)
                 => await mediator.Send(request))
                     .WithName("Cadastrar Conta");
 
-            conta.MapPut("alterar/", static async (IMediator mediator, AlterarContaRequest request)
-                => await mediator.Send(request))
-                    .WithName("Alterar Conta");
+            conta.MapPut("alterar/{id}", static async (IMediator mediator, int id, AlterarContaRequest request) => {
+                if(id != request.Id)
+                {
+                    Results.BadRequest(); 
+                } 
 
-            conta.MapDelete("remover/", static async (IMediator mediator, int id)
+                await mediator.Send(request);
+            }); 
+
+            conta.MapDelete("remover/{id}", static async (IMediator mediator, int id)
                 => await mediator.Send(new RemoverContaRequest(id)))
                     .WithName("Exluir Conta")
                     .RequireAuthorization();
 
-            conta.MapPut("alterar-senha/", static async (IMediator mediator, AlterarSenhaContaRequest request)
-                => await mediator.Send(request))
-                    .WithName("Alterar Senha")
-                    .RequireAuthorization();
+            conta.MapPut("alterar-senha/{id}", static async (IMediator mediator, int id, AlterarSenhaContaRequest request) => {
+                if(id != request.Id)
+                {
+                    Results.BadRequest(); 
+                }
+
+                 await mediator.Send(request);
+            })
+            .WithName("Alterar senha Conta")
+            .RequireAuthorization();
             
             conta.MapPut("login", static async (IMediator mediator, LoginContaRequest request) 
                 => await mediator.Send(request))

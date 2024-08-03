@@ -17,7 +17,7 @@ namespace RedesSociaisApp.Application.Handlers
          => _contaRepository = contaRepository; 
         public async Task<ResultViewModel> Handle(AlterarSenhaContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = _contaRepository.GetById(request.ContaId);
+            var conta = _contaRepository.GetById(request.Id);
 
             if(conta != null && conta.Senha == request.Senha)
             {

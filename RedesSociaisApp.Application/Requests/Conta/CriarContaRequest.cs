@@ -12,24 +12,5 @@ using RedesSociaisApp.Application.Models;
 
 namespace RedesSociaisApp.Application.Requests
 {
-    public class CriarContaRequest : IRequest<ResultViewModel>
-    {
-        public string NomeCompleto { get; set; }
-        public string Senha { get; set; }
-        public string Role { get; set; }
-        public string Email { get; set; }
-        public InputPerfil Perfil { get; set; }
-        public DateTime DataNasc { get; set; }
-        public string Telefone { get; set; }
-    }
-
-    public class InputPerfil
-    {
-        public string NomeExibicao { get; set; }
-        public string Sobre { get; set; }
-        public string Foto { get; set; }
-        public string Profissao { get; set; }
-        public string Localidade { get; set; }
-
-    }
+    public record CriarContaRequest(string NomeCompleto, string Senha, string Role, string Email, CriarPerfilRequest Perfil, DateTime DataNasc, string Telefone) : IRequest<ResultViewModel>;
 }
