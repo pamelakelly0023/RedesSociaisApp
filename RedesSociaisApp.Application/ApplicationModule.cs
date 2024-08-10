@@ -2,6 +2,7 @@ using System.Reflection;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using RedesSociaisApp.Application.Behaviors;
 using RedesSociaisApp.Application.Validators;
 
 namespace RedesSociaisApp.Application
@@ -22,14 +23,21 @@ namespace RedesSociaisApp.Application
         private static IServiceCollection AddMediator(this IServiceCollection services)
         {
             
-            services.AddMediatR(cfg=>cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+                cfg.AddOpenBehavior(typeof(RequestResponseLoggingBehavior<,>));
+                cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+
+            });
+                
             
             return services;
         }
 
         private static IServiceCollection AddValidation(this IServiceCollection services)
         {
-            services.AddValidatorsFromAssemblyContaining<CriarContaValidator>();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
         }

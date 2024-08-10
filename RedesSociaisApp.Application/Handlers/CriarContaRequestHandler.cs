@@ -1,22 +1,20 @@
 using MediatR;
+using FluentValidation;
 using RedesSociaisApp.Application.Models;
 using RedesSociaisApp.Application.Requests;
 using RedesSociaisApp.Domain.Entities;
 using RedesSociaisApp.Domain.Repositories;
+using RedesSociaisApp.Application.Exceptions;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class CriarContaRequestHandler : IRequestHandler<CriarContaRequest, ResultViewModel>
+    public class CriarContaRequestHandler(IContaRepository contaRepository) : IRequestHandler<CriarContaRequest, ResultViewModel>
     {
-        private readonly IContaRepository _contaRepository;
+        private readonly IContaRepository _contaRepository = contaRepository;
 
-        public CriarContaRequestHandler(IContaRepository contaRepository)
-        {
-            _contaRepository = contaRepository;
-            
-        }
         public async Task<ResultViewModel> Handle(CriarContaRequest request, CancellationToken cancellationToken)
         {
+
             var perfil = new Perfil (
                 request.Perfil.NomeExibicao,
                 request.Perfil.Sobre,

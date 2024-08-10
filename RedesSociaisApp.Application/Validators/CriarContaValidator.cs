@@ -18,6 +18,8 @@ namespace RedesSociaisApp.Application.Validators
              RuleFor(x => x.NomeCompleto)
                 .MaximumLength(100)
                     .WithMessage("Tamanho máximo é de 100 caracteres.");
+            
+            RuleFor(x => x.NomeCompleto).NotNull().NotEmpty().WithMessage("Name is required");
         }
     }
 }

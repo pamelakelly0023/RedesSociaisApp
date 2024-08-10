@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using RedesSociaisApp.API.Endpoints;
 using System.Reflection;
 using MediatR;
+using RedesSociaisApp.API.Middlewares;
+using RedesSociaisApp.Application.Exceptions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +17,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddApplication()
     .AddEndpointsApiExplorer()
-    .AddInfrastructure(builder.Configuration); 
+    .AddInfrastructure(builder.Configuration);
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails(); 
 
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
@@ -58,6 +63,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapContaEndpoint();
 app.UseHttpsRedirection();
+app.UseExceptionHandler();
 
 app.Run();
 
