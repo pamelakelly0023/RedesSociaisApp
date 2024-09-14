@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RedesSociaisApp.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using RedesSociaisApp.Infrastructure.Persistence;
 namespace RedesSociaisApp.Infrastructure.Migrations
 {
     [DbContext(typeof(RedesSociaisDbContext))]
-    partial class RedesSociaisDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240914184630_AddConfigurationDelete")]
+    partial class AddConfigurationDelete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

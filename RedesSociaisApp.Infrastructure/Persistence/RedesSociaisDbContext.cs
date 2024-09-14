@@ -24,7 +24,7 @@ namespace RedesSociaisApp.Infrastructure.Persistence
                 e.HasOne(p => p.Perfil)
                     .WithOne(b => b.Conta)
                     .HasForeignKey<Perfil>(p => p.IdConta)
-                    .OnDelete(DeleteBehavior.Restrict);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             builder.Entity<Perfil>(e => {

@@ -12,6 +12,6 @@ namespace RedesSociaisApp.Domain.Repositories
         Conta? GetByEmailAndPassword(string email, string senha);
         Task<int> Insert(Conta conta);
         void Update(Conta conta);
-        void Delete(Conta conta);
+        Task<Conta> Delete(int id);
     }
 }

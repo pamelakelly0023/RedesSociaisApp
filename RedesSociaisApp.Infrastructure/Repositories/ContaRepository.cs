@@ -20,10 +20,18 @@ namespace RedesSociaisApp.Infrastructure.Repositories
             => _context.Contas.FirstOrDefault(c => c.Email == email && c.Senha == senha);                     
         
 
-        public void Delete(Conta conta)
+        public async Task<Conta> Delete(int id)
         {
-            _context.Contas.Remove(conta);
-            _context.SaveChanges(); 
+            var conta = GetById(id);
+            if (conta != null)
+            {
+                _context.Contas.Remove(conta);
+                _context.SaveChanges();
+
+                return conta; 
+            }
+
+            return null;
         }
 
         public Conta? GetById(int id)

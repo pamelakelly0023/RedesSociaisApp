@@ -18,9 +18,14 @@ namespace RedesSociaisApp.Application.Handlers
         }
         public async Task<ResultViewModel> Handle(RemoverContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = _contaRepository.GetById(request.ContaId);
-
-            return conta is null ? ResultViewModel.Error("Not Found") : ResultViewModel.Success();
+            var conta = _contaRepository.GetById(request.Id);
+            if (conta is null)
+            {
+                ResultViewModel.Error("Not Found");
+            }
+            
+            await _contaRepository.Delete(conta.Id);
+            return ResultViewModel.Success();
         }
     }
 }
