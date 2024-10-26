@@ -8,7 +8,7 @@ using RedesSociaisApp.Application.Exceptions;
 
 namespace RedesSociaisApp.API.Middlewares;
 
-    public class ApiExeceptionHandler(RequestDelegate next)
+    public class ApiExceptionHandler(RequestDelegate next)
     {
         public async Task InvokeAsync(HttpContext context)
     {
@@ -55,6 +55,6 @@ public static class ErrorMiddlewareExtensions
     public static IApplicationBuilder UseErrorMiddleware(
         this IApplicationBuilder builder)
     {
-        return builder.UseMiddleware<ApiExeceptionHandler>();
+        return builder.UseMiddleware<ApiExceptionHandler>();
     }
 }

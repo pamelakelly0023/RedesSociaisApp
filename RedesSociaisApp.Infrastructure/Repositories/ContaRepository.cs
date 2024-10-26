@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using RedesSociaisApp.Domain;
 using RedesSociaisApp.Domain.Entities;
 using RedesSociaisApp.Domain.Repositories;
 using RedesSociaisApp.Infrastructure.Persistence;
@@ -58,6 +59,5 @@ namespace RedesSociaisApp.Infrastructure.Repositories
             _context.SaveChanges();
 
         }
-
     }
 }
