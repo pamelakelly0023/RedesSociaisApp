@@ -1,10 +1,8 @@
 using MediatR;
-using FluentValidation;
 using RedesSociaisApp.Application.Models;
 using RedesSociaisApp.Application.Requests;
 using RedesSociaisApp.Domain.Entities;
 using RedesSociaisApp.Domain.Repositories;
-using RedesSociaisApp.Application.Exceptions;
 
 namespace RedesSociaisApp.Application.Handlers
 {

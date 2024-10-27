@@ -1,14 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using RedesSociaisApp.Infrastructure.Persistence;
 using RedesSociaisApp.Infrastructure;
-using System.Text.Json.Serialization;
 using RedesSociaisApp.Application;
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Identity;
 using RedesSociaisApp.API.Endpoints;
-using System.Reflection;
-using MediatR;
-using RedesSociaisApp.API.Middlewares;
 using RedesSociaisApp.Application.Exceptions;
 
 

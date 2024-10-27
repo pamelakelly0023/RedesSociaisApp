@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using OperationResult;
 using RedesSociaisApp.Application.Models;
 using RedesSociaisApp.Application.Requests;
 using RedesSociaisApp.Domain.Repositories;

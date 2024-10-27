@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MediatR;
 using RedesSociaisApp.Application.Models;
 using RedesSociaisApp.Application.Requests.Conta;
-using RedesSociaisApp.Domain.Entities;
 using RedesSociaisApp.Domain.Repositories;
 
 namespace RedesSociaisApp.Application.Handlers

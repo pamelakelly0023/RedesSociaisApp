@@ -1,13 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.EntityFrameworkCore.Query;
 using MediatR;
-using OperationResult;
-using RedesSociaisApp.Domain.Entities;
-using SQLitePCL;
 using RedesSociaisApp.Application.Models;
 
 namespace RedesSociaisApp.Application.Requests

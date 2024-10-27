@@ -1,5 +1,4 @@
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using RedesSociaisApp.Application.Requests;
 using RedesSociaisApp.Application.Requests.Conta;
 

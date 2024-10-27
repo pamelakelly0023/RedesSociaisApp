@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text.Json;
-using System.Threading.Tasks;
 using RedesSociaisApp.Application.Exceptions;
 
 namespace RedesSociaisApp.API.Middlewares;
 
-    public class ApiExceptionHandler(RequestDelegate next)
+public class ApiExceptionHandler(RequestDelegate next)
     {
         public async Task InvokeAsync(HttpContext context)
     {

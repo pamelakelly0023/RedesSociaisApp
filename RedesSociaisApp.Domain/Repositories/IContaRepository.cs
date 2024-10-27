@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using RedesSociaisApp.Domain.Entities;
-using RedesSociaisApp.Domain.ResponseModel;
 
 namespace RedesSociaisApp.Domain.Repositories
 {
