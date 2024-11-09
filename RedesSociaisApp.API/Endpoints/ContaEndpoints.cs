@@ -12,8 +12,8 @@ namespace RedesSociaisApp.API.Endpoints
 
             conta.MapGet("detalhes/{id}", static async (IMediator mediator, int id)
                 => await mediator.Send(new ObterContaRequest(id)))
-                    .WithName("Detalhes Conta")
-                    .RequireAuthorization();
+                    .WithName("Detalhes Conta");
+                    // .RequireAuthorization();
             
             conta.MapPost("criar/", static async (IMediator mediator, CriarContaRequest request)
                 => await mediator.Send(request))
@@ -25,13 +25,13 @@ namespace RedesSociaisApp.API.Endpoints
 
             conta.MapDelete("remover/{id}", static async (IMediator mediator, int id)
                 => await mediator.Send(new RemoverContaRequest(id)))
-                    .WithName("Exluir Conta")
-                    .RequireAuthorization();
+                    .WithName("Exluir Conta");
+                    // .RequireAuthorization();
 
             conta.MapPut("alterar-senha/{id}", static async (IMediator mediator, int id, AlterarSenhaContaRequest request) 
                 => await mediator.Send(request))
-                .WithName("Alterar senha Conta")
-                .RequireAuthorization();
+                .WithName("Alterar senha Conta");
+                // .RequireAuthorization();
             
             conta.MapPut("login", static async (IMediator mediator, LoginContaRequest request) 
                 => await mediator.Send(request))
