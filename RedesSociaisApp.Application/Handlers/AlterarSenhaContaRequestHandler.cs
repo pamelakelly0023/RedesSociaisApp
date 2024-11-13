@@ -5,20 +5,18 @@ using RedesSociaisApp.Domain.Repositories;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class AlterarSenhaContaRequestHandler : IRequestHandler<AlterarSenhaContaRequest, ResultViewModel>
+    public class AlterarSenhaContaRequestHandler(IContaRepository contaRepository) : IRequestHandler<AlterarSenhaContaRequest, ResultViewModel>
     {
-        private readonly IContaRepository _contaRepository;
-
-        public AlterarSenhaContaRequestHandler(IContaRepository contaRepository)
-         => _contaRepository = contaRepository; 
+        private readonly IContaRepository _contaRepository = contaRepository;
+ 
         public async Task<ResultViewModel> Handle(AlterarSenhaContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = _contaRepository.GetById(request.Id);
+            var conta = await _contaRepository.ObterPorIdAsync(request.Id);
 
             if(conta != null && conta.Senha == request.Senha)
             {
                 conta.MudarSenha(request.NovaSenha);
-                _contaRepository.Update(conta);
+                await _contaRepository.Atualizar(conta);
 
                 return ResultViewModel.Success();
                 

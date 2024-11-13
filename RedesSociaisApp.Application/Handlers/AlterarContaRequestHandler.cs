@@ -5,25 +5,22 @@ using RedesSociaisApp.Domain.Repositories;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class AlterarContaRequestHandler : IRequestHandler<AlterarContaRequest, ResultViewModel>
+    public class AlterarContaRequestHandler(IContaRepository contaRepository) : IRequestHandler<AlterarContaRequest, ResultViewModel>
     {
-        private readonly IContaRepository _contaRepository;
-
-        public AlterarContaRequestHandler(IContaRepository contaRepository)
-         => _contaRepository = contaRepository; 
+        private readonly IContaRepository _contaRepository = contaRepository;
 
         public async Task<ResultViewModel> Handle(AlterarContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = _contaRepository.GetById(request.Id);
+            var conta = await _contaRepository.ObterPorIdAsync(request.Id);
 
             if(conta is null)
             {
                 return ResultViewModel.Error("Not Found");
             }
-            
+
             conta.Update(request.NomeCompleto, request.DataNasc, request.Telefone);
 
-            _contaRepository.Update(conta);
+            _contaRepository.Atualizar(conta);
 
             return ResultViewModel.Success();
            

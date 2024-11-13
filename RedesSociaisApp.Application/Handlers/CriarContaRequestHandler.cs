@@ -30,8 +30,8 @@ namespace RedesSociaisApp.Application.Handlers
                 request.DataNasc,
                 request.Telefone
             );    
-           
-            await _contaRepository.Insert(conta);
+
+            await _contaRepository.AddAsync(conta);
 
             return ResultViewModel.Success();
            

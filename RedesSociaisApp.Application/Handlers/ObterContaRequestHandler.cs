@@ -5,27 +5,19 @@ using RedesSociaisApp.Domain.Repositories;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class ObterContaRequestHandler : IRequestHandler<ObterContaRequest, ResultViewModel<ContaViewModel>>
+    public class ObterContaRequestHandler(IContaRepository contaRepository) : IRequestHandler<ObterContaRequest, ResultViewModel<ContaViewModel>>
     {
-        private readonly IContaRepository _contaRepository;
-
-
-        public ObterContaRequestHandler(IContaRepository contaRepository)
-        {
-            _contaRepository = contaRepository;
-        }
+        private readonly IContaRepository _contaRepository = contaRepository;
 
         public async Task<ResultViewModel<ContaViewModel>> Handle(ObterContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = _contaRepository.GetById(request.Id);
-
+            var conta = await _contaRepository.ObterPorIdAsync(request.Id);
             if( conta is null )
             {
                ResultViewModel.Error("Not Found"); 
             }
 
             return ResultViewModel<ContaViewModel>.Success(ContaViewModel.FromEntity(conta));
-           
         }
     }
 }

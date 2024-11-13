@@ -5,22 +5,19 @@ using RedesSociaisApp.Domain.Repositories;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class RemoverContaRequestHandler : IRequestHandler<RemoverContaRequest, ResultViewModel>
+    public class RemoverContaRequestHandler(IContaRepository contaRepository) : IRequestHandler<RemoverContaRequest, ResultViewModel>
     {
-        private readonly IContaRepository _contaRepository;
-        public RemoverContaRequestHandler(IContaRepository contaRepository)
-        {
-            _contaRepository = contaRepository;
-        }
+        private readonly IContaRepository _contaRepository = contaRepository;
         public async Task<ResultViewModel> Handle(RemoverContaRequest request, CancellationToken cancellationToken)
         {
-            var conta = _contaRepository.GetById(request.Id);
+            var conta = await _contaRepository.ObterPorIdAsync(request.Id);
             if (conta is null)
             {
                 ResultViewModel.Error("Not Found");
             }
             
-            await _contaRepository.Delete(conta.Id);
+            await _contaRepository.DeletarAsync(conta);
+
             return ResultViewModel.Success();
         }
     }

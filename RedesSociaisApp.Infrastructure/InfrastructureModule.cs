@@ -8,8 +8,6 @@ using RedesSociaisApp.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 
 namespace RedesSociaisApp.Infrastructure
 {
@@ -47,6 +45,7 @@ namespace RedesSociaisApp.Infrastructure
             services.AddScoped<IContaRepository, ContaRepository>();
             services.AddScoped<IPerfilRepository, PerfilRepository>();
             services.AddScoped<IPublicacaoRepository, PublicacaoRepository>();
+            services.AddScoped(typeof(IRepositoryBase<>), typeof(Repository<>));
 
             return services;
             

@@ -8,9 +8,6 @@ namespace RedesSociaisApp.Domain.Repositories
 {
     public interface IPerfilRepository
     {
-        void Update (Perfil perfil);
-        void Delete (Perfil perfil);
-        Perfil? GetById(int id);
-        void addPublicacao(Publicacao publicacao);
+
     }
 }

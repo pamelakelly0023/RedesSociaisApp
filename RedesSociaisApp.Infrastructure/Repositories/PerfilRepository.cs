@@ -9,24 +9,6 @@ namespace RedesSociaisApp.Infrastructure.Repositories
 {
     public class PerfilRepository : IPerfilRepository
     {
-        public void addPublicacao(Publicacao publicacao)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Perfil perfil)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Perfil? GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Perfil perfil)
-        {
-            throw new NotImplementedException();
-        }
+    
     }
 }
