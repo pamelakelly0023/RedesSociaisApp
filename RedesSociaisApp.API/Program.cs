@@ -10,9 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddApplication()
     .AddEndpointsApiExplorer()
+    .AddExceptionHandler<GlobalExceptionHandler>()
+    .AddProblemDetails()
     .AddInfrastructure(builder.Configuration);
 
-builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+// builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails(); 
 
 builder.Services.AddAuthentication();

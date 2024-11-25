@@ -7,7 +7,12 @@ namespace RedesSociaisApp.Domain.Entities
 {
     public class Conta : BaseEntity
     {
-        // protected Conta() {}
+        // public Conta(long id, string nomeCompleto, string senha, string role, string email, Perfil perfil, DateTime dataNasc, string telefone) 
+        // : this(nomeCompleto, senha, role, email, perfil, dataNasc, telefone)
+        // => Id = id;
+
+        protected Conta(){}
+        
         public Conta(string nomeCompleto, string senha, string role, string email, Perfil perfil, DateTime dataNasc, string telefone)
             : base()
         {

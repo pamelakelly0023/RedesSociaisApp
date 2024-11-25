@@ -1,3 +1,4 @@
+using System.Xml.XPath;
 using RedesSociaisApp.Domain.Entities;
 
 namespace RedesSociaisApp.Domain.Repositories;
@@ -5,7 +6,10 @@ namespace RedesSociaisApp.Domain.Repositories;
 public interface IRepositoryBase<TEntity> where TEntity : BaseEntity
 {
     Task<TEntity> ObterPorIdAsync(int id);
-    Task AddAsync(TEntity entity);
+    int AddAsync(TEntity entity);
     Task DeletarAsync(TEntity entity);
     Task Atualizar(TEntity entity);
+
+    void Add(TEntity entity);
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

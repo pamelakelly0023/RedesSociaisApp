@@ -6,7 +6,6 @@ namespace RedesSociaisApp.Application.Models
     {
         public ContaViewModel(int id, string nomeCompleto, string role, string email, string perfil, DateTime dataNasc, string telefone)
         {
-            Id = id;
             NomeCompleto = nomeCompleto;
             Role = role;
             Email = email;

@@ -1,24 +1,18 @@
-using System.Net.Http.Json;
-using FluentAssertions;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using RedesSociaisApp.Application.Handlers;
-using RedesSociaisApp.Application.Requests;
 using RedesSociaisApp.Domain.Entities;
 using RedesSociaisApp.Domain.Repositories;
 using RedesSociaisApp.UnitTests.Fakes;
 
 namespace RedesSociaisApp.UnitTests.Application
 {
-    public class ContaHandlerTests
+    public class CriarContaRequestHandlerTests
     {
         private readonly CriarContaRequestHandler _sut;
-        private readonly IMediator _mediator = Substitute.For<IMediator>();
         private readonly IContaRepository _contaRepository = Substitute.For<IContaRepository>();
         private readonly Conta _conta;
 
-        public ContaHandlerTests()
+        public CriarContaRequestHandlerTests()
         {
             _sut = new CriarContaRequestHandler(_contaRepository);
         }
@@ -26,19 +20,17 @@ namespace RedesSociaisApp.UnitTests.Application
         [Fact]
         public async Task PostAction_Deve_CriarContaDoUsuarioComSucesso()
         {
+            //Arrange
 
             var request = FakerRequests.CriarContaRequest().Generate();
-            await _contaRepository
-                .AddAsync(Arg.Any<Conta>());
-
-            // Act
             
-            var result = await _sut.Handle(request, CancellationToken.None);
+            //Act
+            var result = ((MediatR.IRequestHandler<RedesSociaisApp.Application.Requests.CriarContaRequest, OperationResult.Result>)_sut).Handle(request, CancellationToken.None);
 
-            // Assert
+            //Assert
+            _contaRepository.Received().AddAsync(Arg.Any<Conta>());
 
-            result.IsSuccess.Should().BeTrue();
-           
+            Assert.True(result.IsSuccess);   
         }
     }
 }

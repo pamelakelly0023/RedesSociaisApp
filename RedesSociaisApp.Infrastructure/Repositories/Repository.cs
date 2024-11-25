@@ -10,7 +10,7 @@ public class Repository<TEntity> : IRepositoryBase<TEntity>
     where TEntity : BaseEntity
 {
     public readonly DbSet<TEntity> _DbSet;
-    private readonly RedesSociaisDbContext _context;
+    protected readonly RedesSociaisDbContext _context;
     public Repository(RedesSociaisDbContext context) 
     {
         _DbSet = context.Set<TEntity>();
@@ -23,10 +23,18 @@ public class Repository<TEntity> : IRepositoryBase<TEntity>
         return await _DbSet.FindAsync(id);
     }
 
-    public async Task AddAsync(TEntity entity)
+    // public async Task AddAsync(TEntity entity)
+    // {
+    //     await _DbSet.AddAsync(entity);
+    //     await _context.SaveChangesAsync();
+    // }
+
+    public int AddAsync(TEntity entity)
     {
-        await _DbSet.AddAsync(entity);
-        await _context.SaveChangesAsync();
+        _DbSet.Add(entity);
+        _context.SaveChanges();
+
+        return entity.Id;
     }
 
     public async Task DeletarAsync(TEntity entity)
@@ -40,5 +48,10 @@ public class Repository<TEntity> : IRepositoryBase<TEntity>
         _DbSet.Update(entity);
         await _context.SaveChangesAsync();
     }
-        
+
+    public void Add(TEntity entity)
+        => _DbSet.Add(entity);
+
+    public Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        => _context.SaveChangesAsync(cancellationToken);
 }

@@ -5,7 +5,15 @@ using System.Threading.Tasks;
 
 namespace RedesSociaisApp.Application.Exceptions;
 
-public class AppException(IList<string> errors) : Exception(string.Join(", ", errors))
+public class AppException : Exception
 {
-    public IList<string> Errors { get; set; } = errors;
+    public AppException(string mensagem)
+        : base(mensagem)
+    {
+    }
+
+    public AppException(string mensagem, Exception innerException)
+        : base(mensagem, innerException)
+    {
+    }
 }

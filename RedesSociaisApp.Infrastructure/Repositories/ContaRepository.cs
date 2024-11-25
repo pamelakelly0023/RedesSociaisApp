@@ -13,10 +13,9 @@ namespace RedesSociaisApp.Infrastructure.Repositories
 {
     public class ContaRepository : Repository<Conta>, IContaRepository
     {
-        private readonly RedesSociaisDbContext _context;
-        public ContaRepository(RedesSociaisDbContext context)
-            : base(context)
-        { } 
+        public ContaRepository(RedesSociaisDbContext context) : base(context)
+        {
+        }
 
         public Conta? GetByEmailAndPassword(string email, string senha)
             => _context.Contas.FirstOrDefault(c => c.Email == email && c.Senha == senha);                      

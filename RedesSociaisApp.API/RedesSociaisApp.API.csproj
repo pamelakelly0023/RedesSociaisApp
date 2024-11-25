@@ -33,4 +33,8 @@
     <ProjectReference Include="..\RedesSociaisApp.Application\RedesSociaisApp.Application.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
+  </PropertyGroup>
+
 </Project>
