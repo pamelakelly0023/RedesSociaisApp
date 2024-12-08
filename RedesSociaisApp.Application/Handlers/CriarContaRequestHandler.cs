@@ -34,7 +34,6 @@ namespace RedesSociaisApp.Application.Handlers
             );
 
             _contaRepository.AddAsync(conta);
-            //  _contaRepository.SaveChangesAsync(cancellationToken);
           
             return Task.FromResult(conta.Id);
         }

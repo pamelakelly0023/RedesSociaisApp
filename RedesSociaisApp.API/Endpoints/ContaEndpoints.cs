@@ -14,16 +14,23 @@ namespace RedesSociaisApp.API.Endpoints
             conta.MapPost("/", async (IMediator mediator, CriarContaRequest request)
                 => 
                 {
-                    await mediator.Send(request);
-                    return Results.Created($"/{conta}", conta);
+                    var result = await mediator.Send(request);
+                    return Results.Created($"/{result}", result);
                 })
                 .Produces(201)
                 .WithName("Cadastrar Conta");
 
-            conta.MapPut("/{id}", static async (IMediator mediator, int id, AlterarContaRequest request) 
-                => await mediator.Send(request))
-                    .WithName("Alterar Conta")
-                    .RequireAuthorization();
+            conta.MapPut("/{id}", async (IMediator mediator, int id, AlterarContaRequest request) 
+                => 
+                {
+                    var result = await mediator.Send(request);
+                    return result != null ? Results.NoContent() : Results.NotFound();
+                    
+                })
+                .Produces(204)
+                .Produces(404)
+                .WithName("Alterar Conta")
+                .RequireAuthorization();
 
             conta.MapDelete("/{id}", static async (IMediator mediator, int id)
                 => await mediator.Send(new RemoverContaRequest(id)))

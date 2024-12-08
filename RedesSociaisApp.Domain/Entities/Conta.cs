@@ -13,7 +13,7 @@ namespace RedesSociaisApp.Domain.Entities
 
         protected Conta(){}
         
-        public Conta(string nomeCompleto, string senha, string role, string email, Perfil perfil, DateTime dataNasc, string telefone)
+        public Conta( string nomeCompleto, string senha, string role, string email, Perfil perfil, DateTime dataNasc, string telefone)
             : base()
         {
             NomeCompleto = nomeCompleto;
