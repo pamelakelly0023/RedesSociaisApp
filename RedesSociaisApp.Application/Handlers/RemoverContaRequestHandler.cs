@@ -1,24 +1,23 @@
 using MediatR;
-using RedesSociaisApp.Application.Models;
+using Microsoft.Extensions.Logging;
+using OperationResult;
+using RedesSociaisApp.Application.Exceptions;
 using RedesSociaisApp.Application.Requests.Conta;
 using RedesSociaisApp.Domain.Repositories;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class RemoverContaRequestHandler(IContaRepository contaRepository) : IRequestHandler<RemoverContaRequest, ResultViewModel>
+    public class RemoverContaRequestHandler(IContaRepository contaRepository) : IRequestHandler<RemoverContaRequest>
     {
         private readonly IContaRepository _contaRepository = contaRepository;
-        public async Task<ResultViewModel> Handle(RemoverContaRequest request, CancellationToken cancellationToken)
+        public async Task Handle(RemoverContaRequest request, CancellationToken cancellationToken)
         {
             var conta = await _contaRepository.ObterPorIdAsync(request.Id);
-            if (conta is null)
-            {
-                ResultViewModel.Error("Not Found");
-            }
-            
-            await _contaRepository.DeletarAsync(conta);
 
-            return ResultViewModel.Success();
+            if(conta is null) return;
+
+            await _contaRepository.DeletarAsync(conta);   
+           
         }
     }
 }
