@@ -23,12 +23,6 @@ public class Repository<TEntity> : IRepositoryBase<TEntity>
         return await _DbSet.FindAsync(id);
     }
 
-    // public async Task AddAsync(TEntity entity)
-    // {
-    //     await _DbSet.AddAsync(entity);
-    //     await _context.SaveChangesAsync();
-    // }
-
     public int AddAsync(TEntity entity)
     {
         _DbSet.Add(entity);
@@ -52,6 +46,12 @@ public class Repository<TEntity> : IRepositoryBase<TEntity>
     public void Add(TEntity entity)
         => _DbSet.Add(entity);
 
-    public Task<int> SaveChangesAsync(CancellationToken cancellationToken)
-        => _context.SaveChangesAsync(cancellationToken);
+    public async Task<int> SaveChangesAsync()
+        => await _context.SaveChangesAsync();
+    
+    // public virtual IQueryable<TEntity> GetAllLazyLoad(Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] children) 
+    // {
+    //     children.ToList().ForEach(x=>_DbSet.Include(x).Load());
+    //     return _DbSet;
+    // }
 }

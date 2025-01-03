@@ -28,7 +28,7 @@ public static class ApplicationModule
         {
             cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
             cfg.AddOpenBehavior(typeof(RequestResponseLoggingBehavior<,>));
-            cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+            cfg.AddOpenBehavior(typeof(ValidationBehaviour<,>));
 
         });
 

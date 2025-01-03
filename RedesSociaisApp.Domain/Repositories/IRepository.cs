@@ -11,5 +11,5 @@ public interface IRepositoryBase<TEntity> where TEntity : BaseEntity
     Task Atualizar(TEntity entity);
 
     void Add(TEntity entity);
-    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+    Task<int> SaveChangesAsync();
 }

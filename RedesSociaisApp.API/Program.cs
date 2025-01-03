@@ -3,6 +3,7 @@ using RedesSociaisApp.Application;
 using Microsoft.OpenApi.Models;
 using RedesSociaisApp.API.Endpoints;
 using RedesSociaisApp.Application.Exceptions;
+using Microsoft.AspNetCore.Http.Json;
 using System.Text.Json.Serialization;
 
 
@@ -15,9 +16,10 @@ builder.Services
     .AddProblemDetails()
     .AddInfrastructure(builder.Configuration);
 
-// builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-// builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options => options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-builder.Services.AddProblemDetails(); 
+builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+{
+    options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();

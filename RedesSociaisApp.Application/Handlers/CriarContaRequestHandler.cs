@@ -1,18 +1,19 @@
-using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
+using OperationResult;
 using RedesSociaisApp.Application.Requests;
-using RedesSociaisApp.Application.Validators;
+using RedesSociaisApp.Application.Responses;
 using RedesSociaisApp.Domain.Entities;
 using RedesSociaisApp.Domain.Repositories;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class CriarContaRequestHandler(IContaRepository contaRepository) : IRequestHandler<CriarContaRequest, int>
+    public sealed class CriarContaRequestHandler(IContaRepository contaRepository, ILogger<CriarContaRequest> logger) : IRequestHandler<CriarContaRequest, Result<CriarContaResponse>>
     {
         private readonly IContaRepository _contaRepository = contaRepository;
+        private readonly ILogger _logger = logger;
 
-
-        public Task<int> Handle(CriarContaRequest request, CancellationToken cancellationToken)
+        public async Task<Result<CriarContaResponse>> Handle(CriarContaRequest request, CancellationToken cancellationToken)
         {
 
             var perfil = new Perfil(
@@ -34,8 +35,11 @@ namespace RedesSociaisApp.Application.Handlers
             );
 
             _contaRepository.AddAsync(conta);
-          
-            return Task.FromResult(conta.Id);
+            await _contaRepository.SaveChangesAsync();
+
+            _logger.LogInformation("Conta {contaId} criada com sucesso", conta.Id);
+  
+            return Result.Success(new CriarContaResponse( Mensagem: "Conta criada com sucesso"));     
         }
     }
 }
