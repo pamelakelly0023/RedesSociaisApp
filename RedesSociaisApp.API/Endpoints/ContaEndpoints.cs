@@ -11,12 +11,11 @@ namespace RedesSociaisApp.API.Endpoints
         {
             var conta = app.MapGroup("/api/v1/conta");
             
-            conta.MapPost("/", async (IMediator mediator, CriarContaRequest request)
+            conta.MapPost("/", static async (IMediator mediator, CriarContaRequest request)
                     =>  await mediator.Send(request))
                 .WithTags("Conta")
                 .WithDisplayName("Cadastrar Conta")
-                .WithName("CadastrarConta")
-                .Produces(200);
+                .WithName("CadastrarConta");
 
             conta.MapPut("/{id}", async (IMediator mediator, int id, AlterarContaRequest request) 
                 => 

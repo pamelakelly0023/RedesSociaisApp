@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Http;
 using OperationResult;
 using RedesSociaisApp.Application.Models;
 using RedesSociaisApp.Application.Requests.Conta;
+using RedesSociaisApp.Application.Responses;
 using RedesSociaisApp.Domain.Repositories;
 using RedesSociaisApp.Infrastructure.Auth;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class LoginContaRequestHandler : IRequestHandler<LoginContaRequest, Result<LoginViewModel>>
+    public class LoginContaRequestHandler : IRequestHandler<LoginContaRequest, LoginViewModel>
     {
         private readonly IContaRepository _contaRepository;
         private readonly IAuthService _authService;
@@ -18,21 +19,21 @@ namespace RedesSociaisApp.Application.Handlers
             _contaRepository = contaRepository;
             _authService = authService;
          }
-        public Task<Result<LoginViewModel>> Handle(LoginContaRequest request, CancellationToken cancellationToken)
+        public Task<LoginViewModel> Handle(LoginContaRequest request, CancellationToken cancellationToken)
         {
             var conta = _contaRepository.GetByEmailAndPassword(request.Email, request.Senha);
             
 
             // if(conta is null)
             // {
-            //      return Result.Error("Erro ao validar dados");
+            //     return Task.FromResult(new LoginViewModel("Dados inválidos"));
             // }     
 
             var token = _authService.GerarToken(conta.Email, conta.Role);   
 
             var viewModel = new LoginViewModel(token);
             
-            return Result.Success(viewModel).AsTask;
+            return Task.FromResult(viewModel);
 
         }
     }

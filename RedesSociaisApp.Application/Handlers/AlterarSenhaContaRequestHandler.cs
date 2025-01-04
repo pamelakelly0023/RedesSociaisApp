@@ -22,7 +22,7 @@ namespace RedesSociaisApp.Application.Handlers
                 
             }
             
-           return  ResultViewModel.Error("Not Found");
+           return ResultViewModel.Error("Not Found");
         }
     }
 }

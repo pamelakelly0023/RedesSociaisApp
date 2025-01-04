@@ -11,4 +11,4 @@ public record CriarContaRequest(
     string Email, 
     CriarPerfilRequest Perfil, 
     DateTime DataNasc, 
-    string Telefone) : IRequest<Result<CriarContaResponse>>;
+    string Telefone) : IRequest<CriarContaResponse>;
