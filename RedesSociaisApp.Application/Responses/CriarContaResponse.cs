@@ -1,4 +1,4 @@
 namespace RedesSociaisApp.Application.Responses;
 
-public record CriarContaResponse(string Mensagem);
+public record CriarContaResponse(int Id);
     

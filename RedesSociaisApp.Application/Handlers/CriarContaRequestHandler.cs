@@ -8,12 +8,12 @@ using RedesSociaisApp.Domain.Repositories;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public sealed class CriarContaRequestHandler(IContaRepository contaRepository, ILogger<CriarContaRequest> logger) : IRequestHandler<CriarContaRequest, CriarContaResponse>
+    public sealed class CriarContaRequestHandler(IContaRepository contaRepository, ILogger<CriarContaRequest> logger) : IRequestHandler<CriarContaRequest, Result<CriarContaResponse>>
     {
         private readonly IContaRepository _contaRepository = contaRepository;
         private readonly ILogger _logger = logger;
 
-        public async Task<CriarContaResponse> Handle(CriarContaRequest request, CancellationToken cancellationToken)
+        public async Task<Result<CriarContaResponse>> Handle(CriarContaRequest request, CancellationToken cancellationToken)
         {
 
             var perfil = new Perfil(
@@ -39,7 +39,7 @@ namespace RedesSociaisApp.Application.Handlers
 
             _logger.LogInformation("Conta {contaId} criada com sucesso", conta.Id);
   
-            return new CriarContaResponse( Mensagem: "Conta criada com sucesso");
+            return new CriarContaResponse(conta.Id);
     
         }
     }

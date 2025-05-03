@@ -40,7 +40,6 @@ public class Repository<TEntity> : IRepositoryBase<TEntity>
     public async Task Atualizar(TEntity entity)
     {
         _DbSet.Update(entity);
-        await _context.SaveChangesAsync();
     }
 
     public void Add(TEntity entity)

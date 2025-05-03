@@ -9,7 +9,7 @@ using RedesSociaisApp.Infrastructure.Auth;
 
 namespace RedesSociaisApp.Application.Handlers
 {
-    public class LoginContaRequestHandler : IRequestHandler<LoginContaRequest, LoginViewModel>
+    public class LoginContaRequestHandler : IRequestHandler<LoginContaRequest, Result<LoginViewModel>>
     {
         private readonly IContaRepository _contaRepository;
         private readonly IAuthService _authService;
@@ -19,22 +19,17 @@ namespace RedesSociaisApp.Application.Handlers
             _contaRepository = contaRepository;
             _authService = authService;
          }
-        public Task<LoginViewModel> Handle(LoginContaRequest request, CancellationToken cancellationToken)
+        public Task<Result<LoginViewModel>> Handle(LoginContaRequest request, CancellationToken cancellationToken)
         {
             var conta = _contaRepository.GetByEmailAndPassword(request.Email, request.Senha);
             
-
-            // if(conta is null)
-            // {
-            //     return Task.FromResult(new LoginViewModel("Dados inválidos"));
-            // }     
-
-            var token = _authService.GerarToken(conta.Email, conta.Role);   
-
-            var viewModel = new LoginViewModel(token);
-            
-            return Task.FromResult(viewModel);
-
+            if(conta is not null)
+            {
+                var token = _authService.GerarToken(conta.Email, conta.Role);   
+                var viewModel = new LoginViewModel(token);
+                return Result.Success(viewModel);
+            }
+            return default;                        
         }
     }
 }

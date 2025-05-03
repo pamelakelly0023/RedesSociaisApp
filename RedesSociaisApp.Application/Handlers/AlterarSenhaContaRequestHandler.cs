@@ -13,7 +13,7 @@ namespace RedesSociaisApp.Application.Handlers
         {
             var conta = await _contaRepository.ObterPorIdAsync(request.Id);
 
-            if(conta != null && conta.Senha == request.Senha)
+            if(conta is not null && conta.Senha == request.Senha)
             {
                 conta.MudarSenha(request.NovaSenha);
                 await _contaRepository.Atualizar(conta);
